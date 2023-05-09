@@ -1,6 +1,6 @@
 import { useState } from 'react';
-// import Button from '../../components/button';
-// import TextInput from '../../components/form/textInput';
+import Button from '../../components/button';
+import TextInput from '../../components/form/textInput';
 import useAuth from '../../hooks/useAuth';
 import CredentialsCard from '../../components/credentials';
 import ErrorMessage from '../../components/errorMessage';
@@ -32,7 +32,7 @@ const Login = () => {
             >
                 <div className="login-form">
                     <form>
-                        {/* <TextInput
+                        <TextInput
                             value={formData.email}
                             onChange={onChange}
                             name="email"
@@ -44,18 +44,18 @@ const Login = () => {
                             name="password"
                             label={'Password *'}
                             type={'password'}
-                        /> */}
+                        />
                     </form>
                     {error && (
                         <ErrorMessage
                             message={'Invalid email and/or password provided'}
                         />
                     )}
-                    {/* <Button
+                    <Button
                         text="Log in"
                         onClick={handleLogin}
                         classes="green width-full"
-                    /> */}
+                    />
                 </div>
             </CredentialsCard>
         </div>

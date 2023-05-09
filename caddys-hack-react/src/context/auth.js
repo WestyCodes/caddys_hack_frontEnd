@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
                 console.log(e.message);
             }
         }
-    }, [location.pathname]);
+    }, [location.pathname, navigate, token]);
 
     const handleLogin = async (email, password) => {
         const res = await login(email, password);
