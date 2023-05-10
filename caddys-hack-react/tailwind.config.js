@@ -7,6 +7,13 @@ module.exports = {
                 'hero-pattern':
                     "url('../public/assets/herobackgroundimage.jpg')",
             },
+            colors: {
+                midnightBlue: {
+                    100: '#0300A1',
+                    200: '#01004A',
+                    300: '#010021',
+                },
+            },
         },
     },
     plugins: [],
