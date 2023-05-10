@@ -2,43 +2,55 @@ import React from 'react';
 
 const HomePage = () => {
     return (
-        <div>
-            <header>
-                <nav>
-                    <div className="navBar-logo">
+        <div className="">
+            <header className="bg-cover bg-left bg-hero-pattern h-screen xl:h-[800px] lg:h-[600px] h-[400px]">
+                <nav className="flex justify-between items-center px-10 py-2 text-black">
+                    <div className="text-2xl font-semibold">
                         <p>Caddy's Hack</p>
                     </div>
-                    <div className="navBar-tracker">
-                        <p>Golf Shot Tracker</p>
-                    </div>
-                    <div className="navBar-signUp">
-                        <p>Sign Up</p>
-                    </div>
-                    <div className="navBar-signIn">
-                        <p>Sign In</p>
-                    </div>
+                    <ul className="flex space-x-4">
+                        <li>
+                            <a href="#">
+                                <span className="text-xl">Caddy Track</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span className="text-xl">Sign Up</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span className="text-xl">Log In</span>
+                            </a>
+                        </li>
+                    </ul>
                 </nav>
-            </header>
-            <main>
-                <section className="hero-section">
+                <section className="grid grid-cols-2 px-10 xl:h-[750px] lg:h-[550px] h-[350px] justify-items-center">
                     <div className="main-empty"></div>
-                    <div className="main-content">
-                        <div className="hero-text">
-                            <h1>Track Your Shots.</h1>
-                            <h2>Improve Your Game.</h2>
-                            <p>
+                    <div className="grid grid-cols-1 place-content-center max-w-lg translate-y-[50px]">
+                        <div className="pb-8 pt-3 px-8 bg-black/10 rounded-lg">
+                            <h1 className="lg:text-5xl text-4xl font-bold text-slate-50">
+                                Track Your Shots.
+                            </h1>
+                            <h2 className="pb-3 lg:text-4xl text-3xl font-bold text-slate-50">
+                                Improve Your Game.
+                            </h2>
+                            <p className="lg:text-xl text-slate-50">
                                 Caddy's Hack is an easy-to-use tool to track
                                 every golf shot you take. User the information
                                 to level up your game and streamline your
                                 practice
                             </p>
                         </div>
-                        <div className="hero-btns">
-                            <p>Sign Up</p>
-                            <p>Learn More</p>
+                        <div className="grid grid-cols-2 justify-items-center">
+                            <p className="text-slate-50">Sign Up</p>
+                            <p className="text-slate-50">Learn More</p>
                         </div>
                     </div>
                 </section>
+            </header>
+            <main>
                 <section className="EasyToUse">
                     <div className="ETU-left">
                         <div className="ETU-text">
