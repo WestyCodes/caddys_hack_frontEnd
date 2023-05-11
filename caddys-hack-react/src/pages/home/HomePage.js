@@ -36,13 +36,13 @@ const HomePage = () => {
                     <div className="main-empty"></div>
                     <div className="grid grid-cols-1 place-content-center max-w-lg translate-y-[50px]">
                         <div className="pb-10 pt-3 px-8 bg-black/10 rounded-lg">
-                            <h1 className="lg:text-5xl text-4xl font-bold text-slate-50 text-right">
+                            <h1 className="lg:text-5xl text-4xl font-bold text-right">
                                 Track Your Shots.
                             </h1>
-                            <h2 className="pb-3 lg:text-4xl text-3xl font-bold text-slate-50 text-right">
+                            <h2 className="pb-3 lg:text-4xl text-3xl font-bold text-right">
                                 Improve Your Game.
                             </h2>
-                            <p className="lg:text-xl text-slate-50 text-right">
+                            <p className="lg:text-xl text-right">
                                 Caddy's Hack is an easy-to-use tool to track
                                 every golf shot you take. Use the information to
                                 level up your game and streamline your practice.
@@ -74,16 +74,16 @@ const HomePage = () => {
             </header>
             <main className="bg-cover bg-left bg-mainTopog-pattern">
                 <div className="bg-midnightBlue-300/95">
-                    <section className="EasyToUse">
-                        <div className="ETU-left">
-                            <div className="ETU-text">
-                                <div className="mini-heading">
+                    <section className="grid grid-cols-2 px-10 lg:h-[550px] h-[350px] justify-items-center">
+                        <div className="grid grid-cols-1 max-w-lg px-10 pt-[100px] h-[400px]">
+                            <div className="">
+                                <div className="lg:text-xl text-base">
                                     <h3>EASY-TO-USE</h3>
                                 </div>
-                                <div className="main-heading">
+                                <div className="pb-3 lg:text-5xl text-4xl font-bold">
                                     <h2>On The Course And The Range...</h2>
                                 </div>
-                                <div className="text">
+                                <div className="py-4">
                                     <p>
                                         Use Caddy's Hack to track which club
                                         you're using and how close to the target
@@ -93,42 +93,82 @@ const HomePage = () => {
                                     </p>
                                 </div>
                             </div>
-                            <div className="ETU-btn">
-                                <p>Open Caddy Track</p>
+                            <div className="">
+                                <a
+                                    href="#_"
+                                    className="relative rounded-full px-5 py-2.5 overflow-hidden group bg-slate-300 relative hover:bg-gradient-to-r hover:from-slate-300 hover:to-slate-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-slate-400 transition-all ease-out duration-300"
+                                >
+                                    <span className="relative text-midnightBlue-200 font-semibold text-xl">
+                                        Open Caddy Track
+                                    </span>
+                                </a>
                             </div>
                         </div>
-                        <div className="ETU-right">
-                            <div className="ETU-image"></div>
+                        <div className="grid grid-cols-1 max-w-lg px-10 pt-[100px] h-[400px]">
+                            <img
+                                className="rounded-3xl"
+                                src={
+                                    process.env.PUBLIC_URL +
+                                    '/assets/golferwithphone.jpg'
+                                }
+                                alt="Man holding phone"
+                            />
                         </div>
                     </section>
-                    <section className="DataLogging">
-                        <div className="DL-left">
-                            <div className="DL-image1"></div>
-                            <div className="DL-image2"></div>
+                    <section className="grid grid-cols-2 px-10 xl:h-[750px] lg:h-[550px] h-[350px] justify-items-center">
+                        <div className="grid grid-cols-1 max-w-lg px-10 h-[400px]">
+                            <div className="">
+                                <img
+                                    className="rounded-3xl mb-3"
+                                    src={
+                                        process.env.PUBLIC_URL +
+                                        '/assets/dispersionpattern.png'
+                                    }
+                                    alt="dispersion of golf shots"
+                                />
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <img
+                                    className="rounded-3xl"
+                                    src={
+                                        process.env.PUBLIC_URL +
+                                        '/assets/golfapppreview.png'
+                                    }
+                                    alt="golf app preview"
+                                />
+                                <img
+                                    className="rounded-3xl"
+                                    src={
+                                        process.env.PUBLIC_URL +
+                                        '/assets/golfapppreview2.png'
+                                    }
+                                    alt="golf app preview"
+                                />
+                            </div>
                         </div>
-                        <div className="DL-right">
+                        <div className="grid grid-cols-1 max-w-lg px-10 h-[400px]">
                             <div className="DL-text">
-                                <div className="mini-heading">
+                                <div className="lg:text-xl text-base">
                                     <h3>BASIC or ADVANCED</h3>
                                 </div>
-                                <div className="main-heading">
+                                <div className="pb-3 lg:text-5xl text-4xl font-bold">
                                     <h2>
                                         For The Quick Log Or The Data Analyst
                                     </h2>
                                 </div>
-                                <div className="text">
-                                    <p>
+                                <div className="py-4">
+                                    <p className="py-4">
                                         The basic view allows you to log a shot
                                         in just 4 taps, perfect for when you're
                                         walking down the fairway
                                     </p>
-                                    <ol>
+                                    <ol className="">
                                         <li>Choose your club!</li>
                                         <li>Tap Left, Right, or On Target!</li>
                                         <li>Tap Long, Short, or Pin High!</li>
                                         <li>Confirm!</li>
                                     </ol>
-                                    <p>
+                                    <p className="py-4">
                                         The advanced view is for the aspiring
                                         professional! A rangefinder is
                                         recommended and you will be able to log
@@ -138,7 +178,14 @@ const HomePage = () => {
                                 </div>
                             </div>
                             <div className="DL-btn">
-                                <p>Sign In To See Your Shots</p>
+                                <a
+                                    href="#_"
+                                    className="relative rounded-full px-5 py-2.5 overflow-hidden group bg-slate-300 relative hover:bg-gradient-to-r hover:from-slate-300 hover:to-slate-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-slate-400 transition-all ease-out duration-300"
+                                >
+                                    <span className="relative text-midnightBlue-200 font-semibold text-xl">
+                                        Sign In To See Your Shots
+                                    </span>
+                                </a>
                             </div>
                         </div>
                     </section>
