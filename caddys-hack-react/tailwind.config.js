@@ -6,6 +6,8 @@ module.exports = {
             backgroundImage: {
                 'hero-pattern':
                     "url('../public/assets/herobackgroundimage.jpg')",
+                'mainTopog-pattern':
+                    "url('../public/assets/ai_gen_golfcourse.png')",
             },
             colors: {
                 midnightBlue: {
