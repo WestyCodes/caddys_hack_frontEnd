@@ -5,6 +5,7 @@ import LoginPage from './pages/login/LoginPage';
 import Dashboard from './pages/dashboard/Dashboard';
 import { AuthProvider, ProtectedRoute } from './context/auth';
 import { ModalProvider } from './context/modal';
+import CaddyTrack from './pages/caddyTrack/CaddyTrack.js';
 
 function App() {
     return (
@@ -18,6 +19,14 @@ function App() {
                             <ProtectedRoute>
                                 <Dashboard />
                             </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/caddytrack"
+                        element={
+                            // <ProtectedRoute>
+                            <CaddyTrack />
+                            // </ProtectedRoute>
                         }
                     />
                     <Route path="/" element={<HomePage />} />
