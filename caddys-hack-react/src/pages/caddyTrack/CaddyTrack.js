@@ -13,9 +13,8 @@ const CaddyTrack = () => {
         <div className="bg-cover bg-center bg-no-repeat bg-trackerbg-pattern h-screen">
             <nav className="container flex justify-between px-4 py-8 mx-auto">
                 <div className="hidden space-x-8 lg:flex">
-                    <a href="#_">Home</a>
+                    <a href={'/'}>Home</a>
                     <a href="#_">Dashboard</a>
-                    <a href="#_">Settings</a>
                     <a href="#_">Logout</a>
                 </div>
                 <div className="dropdown lg:hidden">
@@ -49,7 +48,7 @@ const CaddyTrack = () => {
                         <ul className=" z-10 w-44 bg-slate-600/20  rounded divide-y divide-gray-100 shadow ">
                             <li>
                                 <a
-                                    href="#_"
+                                    href={'/'}
                                     className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
                                 >
                                     Home
@@ -61,14 +60,6 @@ const CaddyTrack = () => {
                                     className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
                                 >
                                     Dashboard
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#_"
-                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
-                                >
-                                    Settings
                                 </a>
                             </li>
                             <li>

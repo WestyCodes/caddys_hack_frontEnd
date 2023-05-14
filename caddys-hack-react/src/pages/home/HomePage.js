@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
     return (
@@ -10,7 +11,7 @@ const HomePage = () => {
                     </div>
                     <ul className="flex space-x-4">
                         <li>
-                            <a href="#_">
+                            <a href={'/caddytrack'}>
                                 <span className="text-xl text-midnightBlue-200">
                                     Caddy Track
                                 </span>
@@ -24,7 +25,7 @@ const HomePage = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="#_">
+                            <a href={'/login'}>
                                 <span className="text-xl text-midnightBlue-200">
                                     Log In
                                 </span>
