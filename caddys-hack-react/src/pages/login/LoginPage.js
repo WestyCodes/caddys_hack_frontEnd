@@ -8,8 +8,8 @@ const Login = () => {
     const [error, setError] = useState(null);
 
     const onChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const { id, value } = e.target;
+        setFormData({ ...formData, [id]: value });
     };
 
     const handleLogin = async () => {
@@ -49,14 +49,17 @@ const Login = () => {
                                                 <input
                                                     type="text"
                                                     className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                                                    id="exampleFormControlInput1"
-                                                    placeholder="Username"
+                                                    id="email"
+                                                    placeholder="Email"
+                                                    onChange={(e) => {
+                                                        onChange(e);
+                                                    }}
                                                 />
                                                 <label
-                                                    htmlFor="exampleFormControlInput1"
+                                                    htmlFor="email"
                                                     className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none "
                                                 >
-                                                    Username
+                                                    Email
                                                 </label>
                                             </div>
 
@@ -67,11 +70,14 @@ const Login = () => {
                                                 <input
                                                     type="password"
                                                     className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                                                    id="exampleFormControlInput11"
+                                                    id="password"
                                                     placeholder="Password"
+                                                    onChange={(e) => {
+                                                        onChange(e);
+                                                    }}
                                                 />
                                                 <label
-                                                    htmlFor="exampleFormControlInput11"
+                                                    htmlFor="password"
                                                     className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none "
                                                 >
                                                     Password
@@ -82,6 +88,7 @@ const Login = () => {
                                                 <button
                                                     className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal bg-midnightBlue-200 text-slate-100 shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
                                                     type="button"
+                                                    onClick={handleLogin}
                                                 >
                                                     Log in
                                                 </button>
@@ -106,7 +113,7 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-18th-hole bg-top bg-cover">
+                                <div className="hidden sm:flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-18th-hole bg-top bg-cover">
                                     <div className="px-4 py-6 text-slate-100 md:mx-6 md:p-12 bg-slate-900/50 rounded-3xl">
                                         <h4 className="mb-6 text-xl font-semibold">
                                             Take control of your game and

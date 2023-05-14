@@ -57,7 +57,6 @@ async function request(method, endpoint, data, auth = true) {
     }
 
     const response = await fetch(`${API_URL}/${endpoint}`, opts);
-
     return response.json();
 }
 

@@ -1,8 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate, useLocation, Navigate } from 'react-router-dom';
-// import Header from '../components/header';
-// import Modal from '../components/modal';
-// import Navigation from '../components/navigation';
 import useAuth from '../hooks/useAuth';
 import { createProfile, get, login, register } from '../service/apiClient';
 import jwt_decode from 'jwt-decode';
@@ -24,8 +21,8 @@ const AuthProvider = ({ children }) => {
                 const getUserInfo = async () => {
                     const res = await get(`users/${userId}`);
                     setLoggedInUserInfo(res.data.user);
-                    if (!res.data.user.firstName || !res.data.user.lastName) {
-                        navigate('/welcome');
+                    if (!res.data.user || !res.data.user) {
+                        navigate('/');
                     } else {
                         navigate(location.pathname || '/');
                     }
@@ -95,19 +92,11 @@ const AuthProvider = ({ children }) => {
 const ProtectedRoute = ({ children }) => {
     const { token } = useAuth();
     const location = useLocation();
-
     if (!token) {
         return <Navigate to={'/login'} replace state={{ from: location }} />;
     }
 
-    return (
-        <div className="container">
-            {/* <Header />
-            <Navigation />
-            <Modal /> */}
-            {children}
-        </div>
-    );
+    return <div className="container">{children}</div>;
 };
 
 export { AuthContext, AuthProvider, ProtectedRoute };

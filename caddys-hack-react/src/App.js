@@ -24,9 +24,9 @@ function App() {
                     <Route
                         path="/caddytrack"
                         element={
-                            // <ProtectedRoute>
-                            <CaddyTrack />
-                            // </ProtectedRoute>
+                            <ProtectedRoute>
+                                <CaddyTrack />
+                            </ProtectedRoute>
                         }
                     />
                     <Route path="/" element={<HomePage />} />

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import useAuth from '../../hooks/useAuth';
 
 const CaddyTrack = () => {
     const [isOpen, setOpen] = useState(false);
+    const { onLogout } = useAuth();
 
     const handleDropDown = () => {
         setOpen(!isOpen);
@@ -14,6 +16,7 @@ const CaddyTrack = () => {
                     <a href="#_">Home</a>
                     <a href="#_">Dashboard</a>
                     <a href="#_">Settings</a>
+                    <a href="#_">Logout</a>
                 </div>
                 <div className="dropdown lg:hidden">
                     <button
@@ -66,6 +69,15 @@ const CaddyTrack = () => {
                                     className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
                                 >
                                     Settings
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={onLogout}
+                                >
+                                    Logout
                                 </a>
                             </li>
                         </ul>
