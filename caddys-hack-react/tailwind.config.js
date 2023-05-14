@@ -10,6 +10,7 @@ module.exports = {
                     "url('../public/assets/ai_gen_golfcourse.png')",
                 'trackerbg-pattern':
                     "url('../public/assets/abstract_bg_altered.png')",
+                '18th-hole': "url('../public/assets/18th_hole.png')",
             },
             colors: {
                 midnightBlue: {
