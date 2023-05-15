@@ -100,7 +100,7 @@ const CaddyTrack = () => {
             <nav className=" container flex justify-between pr-4 py-8 mx-auto h-1/6">
                 <div className="z-50 dropdownClub">
                     <button
-                        className="text-white bg-slate-600/30 font-medium rounded-r-full text-sm  py-1 pr-4 text-center inline-flex items-center"
+                        className="text-white bg-slate-600/30 font-medium rounded-r-full sm:rounded-full text-sm  py-1 pr-4 sm:pl-2 sm:pr-3 text-center inline-flex items-center"
                         onClick={handleClubDropDown}
                     >
                         <svg
