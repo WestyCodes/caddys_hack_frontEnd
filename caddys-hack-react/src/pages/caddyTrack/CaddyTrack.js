@@ -10,7 +10,8 @@ const CaddyTrack = () => {
 
     const [user, setUser] = useState({});
     const [isOpen, setOpen] = useState(false);
-    const [golfClub, setGolfClub] = useState(null);
+    const [clubOpen, setClubOpen] = useState(false);
+    const [golfClub, setGolfClub] = useState({ name: `PICK A CLUB` });
     const [shotDirection, setShotDirection] = useState(true);
     const [shotDistance, setShotDistance] = useState(false);
     const [confirmShot, setConfirmShot] = useState(false);
@@ -28,10 +29,14 @@ const CaddyTrack = () => {
         setOpen(!isOpen);
     };
 
+    const handleClubDropDown = () => {
+        setClubOpen(!clubOpen);
+    };
+
     const createShot = () => {
         const shot = {
             userId: user.id,
-            golfClubId: golfClub,
+            golfClubId: golfClub.id,
             left: left,
             right: right,
             onTarget: onTarget,
@@ -39,6 +44,13 @@ const CaddyTrack = () => {
             short: short,
             pinHigh: pinHigh,
         };
+        setLeft(false);
+        setRight(false);
+        setOnTarget(false);
+        setLong(false);
+        setShort(false);
+        setPinHigh(false);
+        setShotDirection(true);
         console.log(shot);
         return shot;
     };
@@ -71,7 +83,7 @@ const CaddyTrack = () => {
         if (shotError) {
             return 'There was an error with the shot, refresh and try again.';
         } else {
-            return setShotParagraph(...shotText);
+            return setShotParagraph(shotText);
         }
     };
 
@@ -84,8 +96,8 @@ const CaddyTrack = () => {
     }, [userId]);
 
     return (
-        <div className="bg-cover bg-center bg-no-repeat bg-trackerbg-pattern h-screen">
-            <nav className="container flex justify-between px-4 py-8 mx-auto h-1/6">
+        <div className="bg-cover bg-center bg-no-repeat bg-trackerbg-pattern h-screen w-screen">
+            <nav className=" container flex justify-between px-4 py-8 mx-auto h-1/6">
                 <div className="hidden space-x-8 lg:flex">
                     <a href={'/'}>Home</a>
                     <a href="#_">Dashboard</a>
@@ -93,9 +105,9 @@ const CaddyTrack = () => {
                         Logout
                     </a>
                 </div>
-                <div className="dropdown lg:hidden">
+                <div className="z-[51] dropdown lg:hidden">
                     <button
-                        className="text-white bg-transparent hover:bg-slate-600/30 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+                        className="z-51 text-white bg-transparent hover:bg-slate-600/30 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
                         onClick={handleDropDown}
                     >
                         <svg
@@ -117,15 +129,15 @@ const CaddyTrack = () => {
 
                     <div
                         id="dropdown"
-                        className={`z-10 w-44 bg-slate-600/20  text-white rounded divide-y divide-gray-100 shadow ${
+                        className={`z-51 w-44 bg-slate-600/80  text-white rounded divide-y divide-gray-100 shadow ${
                             isOpen ? 'block' : 'hidden'
                         }`}
                     >
-                        <ul className=" z-10 w-44 bg-slate-600/20  rounded divide-y divide-gray-100 shadow ">
+                        <ul className=" z-51 w-44 bg-slate-600/20  rounded divide-y divide-gray-100 shadow ">
                             <li>
                                 <a
                                     href={'/'}
-                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
                                 >
                                     Home
                                 </a>
@@ -133,7 +145,7 @@ const CaddyTrack = () => {
                             <li>
                                 <a
                                     href="#_"
-                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
                                 >
                                     Dashboard
                                 </a>
@@ -141,7 +153,7 @@ const CaddyTrack = () => {
                             <li>
                                 <a
                                     href="#_"
-                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
                                     onClick={onLogout}
                                 >
                                     Logout
@@ -156,9 +168,295 @@ const CaddyTrack = () => {
                     </h3>
                 </div>
             </nav>
-            <div className="h-2/6"></div>
+            <div className="h-2/6 grid grid-cols-3">
+                <div className="z-50 dropdownClub">
+                    <button
+                        className="text-white bg-slate-600/30 font-medium rounded-r-full text-sm  py-1 pr-4 text-center inline-flex items-center"
+                        onClick={handleClubDropDown}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="50"
+                            height="50"
+                            viewBox="0 0 64 64"
+                        >
+                            <path fill="#656D78" d="M46 21h3v42h-3z" />
+                            <path
+                                fill="#E6E9ED"
+                                d="M46 15h-5.99c-.14 0-.28 0-.41-.01-4.229-.21-7.59-3.71-7.59-7.99V2.47C34.109 1.61 36.75 1 40 1c4.979 0 9 4.03 9 9v11h-3v-6z"
+                            />
+                            <path
+                                fill="#545C66"
+                                d="M32.01 7c0 4.28 3.36 7.78 7.59 7.99C28.899 14.83 25.01 8 25.01 8l7-1z"
+                            />
+                            <path
+                                fill="#656D78"
+                                d="M25.01 8s1.979-3.47 7-5.53V7l-7 1z"
+                            />
+                            <path
+                                fill="#E6E9ED"
+                                d="M41.01 29.02V38h-3v-4.98c0-2.21-1.79-4-4-4h-8.99c-2.21 0-4-1.789-4-4 0-3.319 2.68-6 6-6h3.99c5.53 0 10 4.47 10 10z"
+                            />
+                            <path
+                                fill="#656D78"
+                                d="M38.01 38h3v25h-3zM28.01 50.06h3V63h-3z"
+                            />
+                            <path
+                                fill="#CCD1D9"
+                                d="m33 40-1.99 6v4.06h-3V46L30 40z"
+                            />
+                            <path
+                                fill="#E6E9ED"
+                                d="M33 38v2H15v-2c0-1.66 1.35-3 3-3h12c1.66 0 3 1.34 3 3z"
+                            />
+                            <g>
+                                <path d="M41.012 30.018a1 1 0 0 1-1-1c0-4.963-4.037-9-9-9a1 1 0 1 1 0-2c6.065 0 11 4.935 11 11a1 1 0 0 1-1 1zM21.014 26.018a1 1 0 0 1-1-1c0-3.859 3.141-7 7-7a1 1 0 1 1 0 2c-2.757 0-5 2.243-5 5a1 1 0 0 1-1 1z" />
+                                <path d="M31.012 20.018h-3.998a1 1 0 1 1 0-2h3.998a1 1 0 1 1 0 2zM25.014 30.018c-2.757 0-5-2.243-5-5a1 1 0 1 1 2 0c0 1.654 1.346 3 3 3a1 1 0 1 1 0 2z" />
+                                <path d="M34.01 30.018h-8.996a1 1 0 1 1 0-2h8.996a1 1 0 1 1 0 2z" />
+                                <path d="M38.01 34.018a1 1 0 0 1-1-1c0-1.654-1.346-3-3-3a1 1 0 1 1 0-2c2.757 0 5 2.243 5 5a1 1 0 0 1-1 1zM41.012 63.999a1 1 0 0 1-1-1V29.018a1 1 0 1 1 2 0v33.981a1 1 0 0 1-1 1z" />
+                                <path d="M38.01 63.999a1 1 0 0 1-1-1V33.018a1 1 0 1 1 2 0v29.981a1 1 0 0 1-1 1z" />
+                                <path d="M41.012 38.996H38.01a1 1 0 1 1 0-2h3.002a1 1 0 1 1 0 2zM49 10.999a1 1 0 0 1-1-1C48 5.588 44.411 2 40 2a1 1 0 1 1 0-2c5.514 0 10 4.485 10 9.999a1 1 0 0 1-1 1z" />
+                                <path d="M49 64a1 1 0 0 1-1-1V10.219a1 1 0 1 1 2 0V63a1 1 0 0 1-1 1zM25.001 8.998a.997.997 0 0 1-.867-1.494C24.309 7.197 28.551 0 40 0a1 1 0 1 1 0 2C29.763 2 26.022 8.233 25.868 8.499a1 1 0 0 1-.867.499z" />
+                                <path d="M46 16h-5.994c-11.455 0-15.697-7.197-15.872-7.504a1 1 0 0 1 1.735-.995c.157.272 3.9 6.499 14.137 6.499H46a1 1 0 1 1 0 2z" />
+                                <path d="M46 64a1 1 0 0 1-1-1V15a1 1 0 1 1 2 0v48a1 1 0 0 1-1 1z" />
+                                <path d="M49 22h-3a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2zM40.006 16c-4.963 0-9-4.037-9-9a1 1 0 1 1 2 0c0 3.859 3.141 7 7 7a1 1 0 1 1 0 2z" />
+                                <path d="M32.006 8a1 1 0 0 1-1-1V2.473a1 1 0 1 1 2 0V7a1 1 0 0 1-1 1z" />
+                                <path d="M25.001 9a1 1 0 0 1-.14-1.99l7.004-1a1 1 0 1 1 .283 1.981l-7.004 1a1.156 1.156 0 0 1-.143.009zM44 7h-7a1 1 0 1 1 0-2h7a1 1 0 1 1 0 2zM44 10h-7a1 1 0 1 1 0-2h7a1 1 0 1 1 0 2zM33 38.999a1 1 0 0 1-1-1c0-1.103-.897-2-2-2a1 1 0 1 1 0-2c2.206 0 4 1.794 4 4a1 1 0 0 1-1 1zM15 38.999a1 1 0 0 1-1-1c0-2.206 1.794-4 4-4a1 1 0 1 1 0 2c-1.103 0-2 .897-2 2a1 1 0 0 1-1 1z" />
+                                <path d="M30 35.999H18a1 1 0 1 1 0-2h12a1 1 0 1 1 0 2zM33 40.998a1 1 0 0 1-1-1v-1.999a1 1 0 1 1 2 0v1.999a1 1 0 0 1-1 1z" />
+                                <path d="M33 40.998H15a1 1 0 1 1 0-2h18a1 1 0 1 1 0 2z" />
+                                <path d="M15 40.998a1 1 0 0 1-1-1v-1.999a1 1 0 1 1 2 0v1.999a1 1 0 0 1-1 1zM31.006 46.999a1.001 1.001 0 0 1-.949-1.316l1.994-6.001a1.001 1.001 0 0 1 1.899.631l-1.994 6.001a1.004 1.004 0 0 1-.95.685zM28.004 46.999a1.001 1.001 0 0 1-.949-1.316l1.994-6.001a1.001 1.001 0 0 1 1.899.631l-1.994 6.001a1.004 1.004 0 0 1-.95.685z" />
+                                <path d="M28.004 64a1 1 0 0 1-1-1V45.999a1 1 0 1 1 2 0V63a1 1 0 0 1-1 1zM31.006 63.999a1 1 0 0 1-1-1v-17a1 1 0 1 1 2 0v17a1 1 0 0 1-1 1z" />
+                                <path d="M31.006 51.06h-3.002a1 1 0 1 1 0-2h3.002a1 1 0 1 1 0 2z" />
+                            </g>
+                        </svg>
+                    </button>
+
+                    <div
+                        id="dropdownClub"
+                        className={`z-50 h-[300px] overflow-auto w-44 bg-slate-600/20  text-white rounded divide-y divide-gray-100 shadow ${
+                            clubOpen ? 'block' : 'hidden'
+                        }`}
+                    >
+                        <ul className=" z-50 w-44 bg-slate-600/20  rounded divide-y divide-gray-100 shadow ">
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 1,
+                                            name: 'Driver',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    Driver
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 2,
+                                            name: '3 Wood',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    3 Wood
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 3,
+                                            name: '3 Hybrid',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    3 Hybrid
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 4,
+                                            name: '4 Iron',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    4 Iron
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 5,
+                                            name: '5 Iron',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    5 Iron
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 6,
+                                            name: '6 Iron',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    6 Iron
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 7,
+                                            name: '7 Iron',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    7 Iron
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="z-50 hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 8,
+                                            name: '8 Iron',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    8 Iron
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 9,
+                                            name: '9 Iron',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    9 Iron
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 10,
+                                            name: 'Pitching Wedge',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    Pitching Wedge
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 11,
+                                            name: 'Gap Wedge',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    Gap Wedge
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 12,
+                                            name: 'Sand Wedge',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    Sand Wedge
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 13,
+                                            name: 'Lob Wedge',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    Lob Wedge
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/50"
+                                    onClick={(e) => {
+                                        setGolfClub({
+                                            id: 14,
+                                            name: 'Putter',
+                                        });
+                                        handleClubDropDown();
+                                    }}
+                                >
+                                    Putter
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 justify-items-center">
+                    <h3 className="text-3xl font-bold text-white text-center">{`${golfClub.name}`}</h3>
+                </div>
+            </div>
             <div className="h-3/6 grid grid-cols-3 grid-rows-5">
-                <div className="col-span-3 row-span-2 grid grid-cols-1 justify-items-center translate-x-[17px]">
+                <div className="-z-1 col-span-3 row-span-2 grid grid-cols-1 justify-items-center translate-x-[17px]">
                     <svg
                         fill="white"
                         version="1.1"
@@ -195,9 +493,9 @@ const CaddyTrack = () => {
                         type="button"
                         onClick={() => {
                             // handleSubmit();
+                            setConfirmShot(false);
                             createShotText();
                             createShot();
-                            setConfirmShot(false);
                         }}
                     >
                         Confirm!
