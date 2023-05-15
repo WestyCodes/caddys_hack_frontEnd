@@ -1,13 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { get } from '../../service/apiClient';
+
 import useAuth from '../../hooks/useAuth';
+import jwt_decode from 'jwt-decode';
 
 const CaddyTrack = () => {
+    const { token } = useAuth();
+    const { userId } = jwt_decode(token);
+
+    const [user, setUser] = useState({});
     const [isOpen, setOpen] = useState(false);
+    const [golfClub, setGolfClub] = useState(null);
+    const [shotDirection, setShotDirection] = useState(true);
+    const [shotDistance, setShotDistance] = useState(false);
+    const [confirmShot, setConfirmShot] = useState(false);
+    const [shotParagraph, setShotParagraph] = useState('');
+    const [left, setLeft] = useState(false);
+    const [right, setRight] = useState(false);
+    const [onTarget, setOnTarget] = useState(false);
+    const [long, setLong] = useState(false);
+    const [short, setShort] = useState(false);
+    const [pinHigh, setPinHigh] = useState(false);
+
     const { onLogout } = useAuth();
 
     const handleDropDown = () => {
         setOpen(!isOpen);
     };
+
+    const createShot = () => {
+        const shot = {
+            userId: user.id,
+            golfClubId: golfClub,
+            left: left,
+            right: right,
+            onTarget: onTarget,
+            long: long,
+            short: short,
+            pinHigh: pinHigh,
+        };
+        console.log(shot);
+        return shot;
+    };
+
+    const createShotText = () => {
+        let shotDir = null;
+        let shotLength = null;
+        let shotError = false;
+        if (left) {
+            shotDir = 'left of';
+        } else if (right) {
+            shotDir = 'right of';
+        } else if (onTarget) {
+            shotDir = 'on';
+        } else {
+            shotError = true;
+        }
+        if (short) {
+            shotLength = 'short';
+        } else if (long) {
+            shotLength = 'long';
+        } else if (pinHigh) {
+            shotLength = 'Pin High';
+        } else {
+            shotError = true;
+        }
+
+        const shotText = `Your golf shot was ${shotDir} target, and ${shotLength}`;
+        console.log(shotText);
+        if (shotError) {
+            return 'There was an error with the shot, refresh and try again.';
+        } else {
+            return setShotParagraph(...shotText);
+        }
+    };
+
+    useEffect(() => {
+        const getUserInfo = async () => {
+            const res = await get(`users/${userId}`);
+            setUser(res.data.user);
+        };
+        getUserInfo();
+    }, [userId]);
 
     return (
         <div className="bg-cover bg-center bg-no-repeat bg-trackerbg-pattern h-screen">
@@ -93,11 +167,11 @@ const CaddyTrack = () => {
                         viewBox="0 0 86.5 86.5"
                         height="100"
                     >
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                         <g
                             id="SVGRepo_tracerCarrier"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         ></g>
                         <g id="SVGRepo_iconCarrier">
                             {' '}
@@ -109,51 +183,139 @@ const CaddyTrack = () => {
                     </svg>
                 </div>
                 <div></div>
-                <div className="grid grid-cols-1 justify-items-center">
-                    {/* <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="75"
-                        height="75"
-                        viewBox="0 0 20 20"
-                        fill="white"
-                        className=" rotate-90 translate-x-[-5px]"
-                    >
-                        <path d="M10.018 18v-5h10V5h-10V0L0 8.939 10.018 18z" />
-                    </svg> */}
-                </div>
+                <div className=""></div>
                 <div></div>
-                <div className="row-span-2 left arrow grid grid-cols-1 justify-items-end ">
+                <div
+                    className={`px-5 col-span-3 grid grid-cols-1 justify-items-center ${
+                        confirmShot ? 'block' : 'hidden'
+                    }`}
+                >
+                    <button
+                        className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-3xl font-medium uppercase leading-normal bg-midnightBlue-200 text-slate-100 shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+                        type="button"
+                        onClick={() => {
+                            // handleSubmit();
+                            createShotText();
+                            createShot();
+                            setConfirmShot(false);
+                        }}
+                    >
+                        Confirm!
+                    </button>
+                </div>
+                <div
+                    className={`row-span-2 left arrow grid grid-cols-1 justify-items-end ${
+                        shotDirection ? 'grid' : 'hidden'
+                    }`}
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="75"
                         height="75"
                         viewBox="0 0 20 20"
                         fill="white"
+                        onClick={() => {
+                            setLeft(true);
+                            setShotDirection(false);
+                            setShotDistance(true);
+                        }}
                     >
                         <path d="M10.018 18v-5h10V5h-10V0L0 8.939 10.018 18z" />
                     </svg>
                 </div>
-                <div className="row-span-2 ball grid grid-cols-1 justify-items-center">
+                <div
+                    className={`row-span-2  text-right text-white ${
+                        shotDistance ? 'block' : 'hidden'
+                    }`}
+                >
+                    <p
+                        className="text-6xl font-bold max-h-max"
+                        onClick={() => {
+                            setShort(true);
+                            setShotDistance(false);
+                            setConfirmShot(true);
+                        }}
+                    >
+                        S
+                    </p>
+                    <p className="text-xs">SHORT</p>
+                </div>
+                <div
+                    className={`row-span-2 ball grid grid-cols-1 justify-items-center ${
+                        shotDirection ? 'grid' : 'hidden'
+                    }`}
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 2048 2048"
                         width="75"
                         height="75"
                         fill="white"
+                        onClick={() => {
+                            setOnTarget(true);
+                            setShotDirection(false);
+                            setShotDistance(true);
+                        }}
                     >
                         <circle cx="1024" cy="1024" r="768" />
                     </svg>
                 </div>
-                <div className="row-span-2 right arrow">
+                <div
+                    className={`row-span-2 ball grid grid-cols-1 justify-items-center ${
+                        shotDistance ? 'grid' : 'hidden'
+                    }`}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 2048 2048"
+                        width="75"
+                        height="75"
+                        fill="white"
+                        onClick={() => {
+                            setPinHigh(true);
+                            setShotDistance(false);
+                            setConfirmShot(true);
+                        }}
+                    >
+                        <circle cx="1024" cy="1024" r="768" />
+                    </svg>
+                </div>
+                <div
+                    className={`row-span-2 ${
+                        shotDirection ? 'grid' : 'hidden'
+                    }`}
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="75"
                         height="75"
                         viewBox="0 0 20 20"
                         fill="white"
+                        onClick={() => {
+                            setRight(true);
+                            setShotDirection(false);
+                            setShotDistance(true);
+                        }}
                     >
                         <path d="M10.029 5H0v7.967h10.029V18l9.961-9.048L10.029 0v5z" />
                     </svg>
+                </div>
+                <div
+                    className={`row-span-2 text-white ${
+                        shotDistance ? 'block' : 'hidden'
+                    }`}
+                >
+                    <p
+                        className="text-6xl font-bold max-h-max"
+                        onClick={() => {
+                            setLong(true);
+                            setConfirmShot(true);
+                            setShotDistance(false);
+                        }}
+                    >
+                        L
+                    </p>
+                    <p className="text-xs">LONG</p>
                 </div>
             </div>
         </div>
