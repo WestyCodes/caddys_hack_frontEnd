@@ -97,78 +97,7 @@ const CaddyTrack = () => {
 
     return (
         <div className="bg-cover bg-center bg-no-repeat bg-trackerbg-pattern h-screen w-screen">
-            <nav className=" container flex justify-between px-4 py-8 mx-auto h-1/6">
-                <div className="hidden space-x-8 lg:flex">
-                    <a href={'/'}>Home</a>
-                    <a href="#_">Dashboard</a>
-                    <a onClick={onLogout} href="#_">
-                        Logout
-                    </a>
-                </div>
-                <div className="z-[51] dropdown lg:hidden">
-                    <button
-                        className="z-51 text-white bg-transparent hover:bg-slate-600/30 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
-                        onClick={handleDropDown}
-                    >
-                        <svg
-                            className="w-7 h-7"
-                            aria-hidden="true"
-                            fill="none"
-                            stroke="black"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
-                    </button>
-
-                    <div
-                        id="dropdown"
-                        className={`z-51 w-44 bg-slate-600/80  text-white rounded divide-y divide-gray-100 shadow ${
-                            isOpen ? 'block' : 'hidden'
-                        }`}
-                    >
-                        <ul className=" z-51 w-44 bg-slate-600/20  rounded divide-y divide-gray-100 shadow ">
-                            <li>
-                                <a
-                                    href={'/'}
-                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
-                                >
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#_"
-                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
-                                >
-                                    Dashboard
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#_"
-                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
-                                    onClick={onLogout}
-                                >
-                                    Logout
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <h3 className="text-xl font-medium text-midnightBlue-200">
-                        Caddy Track
-                    </h3>
-                </div>
-            </nav>
-            <div className="h-2/6 grid grid-cols-3">
+            <nav className=" container flex justify-between pr-4 py-8 mx-auto h-1/6">
                 <div className="z-50 dropdownClub">
                     <button
                         className="text-white bg-slate-600/30 font-medium rounded-r-full text-sm  py-1 pr-4 text-center inline-flex items-center"
@@ -451,6 +380,73 @@ const CaddyTrack = () => {
                         </ul>
                     </div>
                 </div>
+                <div className="hidden space-x-8 lg:flex">
+                    <a href={'/'}>Home</a>
+                    <a href="#_">Dashboard</a>
+                    <a onClick={onLogout} href="#_">
+                        Logout
+                    </a>
+                </div>
+                <div className="z-[51] dropdown lg:hidden">
+                    <button
+                        className="z-51 text-white bg-transparent hover:bg-slate-600/30 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+                        onClick={handleDropDown}
+                    >
+                        <svg
+                            className="w-7 h-7"
+                            aria-hidden="true"
+                            fill="none"
+                            stroke="black"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
+                        </svg>
+                    </button>
+
+                    <div
+                        id="dropdown"
+                        className={`z-51 w-44 bg-slate-600/80  text-white rounded divide-y divide-gray-100 shadow ${
+                            isOpen ? 'block' : 'hidden'
+                        }`}
+                    >
+                        <ul className=" z-51 w-44 bg-slate-600/20  rounded divide-y divide-gray-100 shadow ">
+                            <li>
+                                <a
+                                    href={'/'}
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
+                                >
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
+                                >
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#_"
+                                    className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
+                                    onClick={onLogout}
+                                >
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div className="h-2/6 grid grid-cols-3">
+                <div></div>
                 <div className="grid grid-cols-1 justify-items-center">
                     <h3 className="text-3xl font-bold text-white text-center">{`${golfClub.name}`}</h3>
                 </div>
