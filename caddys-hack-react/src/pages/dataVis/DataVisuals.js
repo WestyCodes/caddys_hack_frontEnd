@@ -94,7 +94,10 @@ const DataVis = () => {
         <div>
             <div className="flex w-screen h-screen text-slate-200 bg-midnightBlue-200">
                 <div className="flex flex-col w-56">
-                    <button className="relative text-sm focus:outline-none group">
+                    <button
+                        className="relative text-sm focus:outline-none group"
+                        onClick={() => navigate('/')}
+                    >
                         <div className="flex items-center justify-between w-full h-16 px-4 border-b border-gray-300 hover:bg-blue-300 hover:text-midnightBlue-300">
                             <span className="font-bold text-xl">
                                 Caddy's Hack
