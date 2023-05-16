@@ -8,22 +8,16 @@ async function register(email, password) {
     return await post('users', { email, password }, false);
 }
 
-async function createProfile(userId, firstName, lastName, githubUrl, bio) {
+async function createProfile(userId, firstName, lastName, bio) {
     return await patch(`users/${userId}`, {
         firstName,
         lastName,
-        githubUrl,
         bio,
     });
 }
 
-async function getPosts() {
-    const res = await get('posts');
-    return res.data.posts;
-}
-
-async function updatePost(postID, content) {
-    return await patch(`posts/${postID}`, { content }, true);
+async function createGolfShot(userId, shotData) {
+    return await post(`users/${userId}/golfshot`, shotData);
 }
 
 async function post(endpoint, data, auth = true) {
@@ -60,13 +54,4 @@ async function request(method, endpoint, data, auth = true) {
     return response.json();
 }
 
-export {
-    login,
-    getPosts,
-    updatePost,
-    register,
-    createProfile,
-    get,
-    post,
-    patch,
-};
+export { login, createGolfShot, register, createProfile, get, post, patch };

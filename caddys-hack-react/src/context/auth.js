@@ -1,7 +1,13 @@
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
-import { createProfile, get, login, register } from '../service/apiClient';
+import {
+    createProfile,
+    get,
+    login,
+    register,
+    createGolfShot,
+} from '../service/apiClient';
 import jwt_decode from 'jwt-decode';
 
 const AuthContext = createContext();
@@ -75,6 +81,17 @@ const AuthProvider = ({ children }) => {
         navigate('/');
     };
 
+    const handleCreateShot = async (shotData) => {
+        const { userId } = jwt_decode(token);
+        const res = await createGolfShot(userId, shotData);
+        const status = res.status;
+        if (status === 'fail') {
+            return status;
+        } else if (status === 'success') {
+            return res;
+        }
+    };
+
     const value = {
         token,
         loggedInUserInfo,
@@ -82,6 +99,7 @@ const AuthProvider = ({ children }) => {
         onLogout: handleLogout,
         onRegister: handleRegister,
         onCreateProfile: handleCreateProfile,
+        onCreateShot: handleCreateShot,
     };
 
     return (

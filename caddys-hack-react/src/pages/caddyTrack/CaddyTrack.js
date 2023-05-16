@@ -5,7 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import jwt_decode from 'jwt-decode';
 
 const CaddyTrack = () => {
-    const { token } = useAuth();
+    const { token, onCreateShot } = useAuth();
     const { userId } = jwt_decode(token);
 
     const [user, setUser] = useState({});
@@ -31,6 +31,13 @@ const CaddyTrack = () => {
 
     const handleClubDropDown = () => {
         setClubOpen(!clubOpen);
+    };
+
+    const handleCreateShot = async () => {
+        const res = await onCreateShot(createShot());
+        res.status === 'fail'
+            ? console.log('It failed')
+            : console.log('It Worked');
     };
 
     const createShot = () => {
@@ -491,7 +498,7 @@ const CaddyTrack = () => {
                             // handleSubmit();
                             setConfirmShot(false);
                             createShotText();
-                            createShot();
+                            handleCreateShot();
                         }}
                     >
                         Confirm!
