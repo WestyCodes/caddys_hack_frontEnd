@@ -389,12 +389,12 @@ const CaddyTrack = () => {
                 </div>
                 <div className="hidden space-x-8 lg:flex">
                     <a href={'/'}>Home</a>
-                    <a href="#_">Dashboard</a>
+                    <a href={'/datavis'}>My Shots</a>
                     <a onClick={onLogout} href="#_">
                         Logout
                     </a>
                 </div>
-                <div className="z-[51] dropdown lg:hidden">
+                <div className="z-[51] dropdown lg:hidden ">
                     <button
                         className="z-51 text-white bg-transparent hover:bg-slate-600/30 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
                         onClick={handleDropDown}
@@ -418,7 +418,7 @@ const CaddyTrack = () => {
 
                     <div
                         id="dropdown"
-                        className={`z-51 w-44 bg-slate-600/80  text-white rounded divide-y divide-gray-100 shadow ${
+                        className={`absolute right-0 mr-5 z-51 w-44 bg-slate-600/80  text-white rounded divide-y divide-gray-100 shadow ${
                             isOpen ? 'block' : 'hidden'
                         }`}
                     >
@@ -433,10 +433,10 @@ const CaddyTrack = () => {
                             </li>
                             <li>
                                 <a
-                                    href="#_"
+                                    href={'/datavis'}
                                     className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
                                 >
-                                    Dashboard
+                                    My Shots
                                 </a>
                             </li>
                             <li>
@@ -492,7 +492,7 @@ const CaddyTrack = () => {
                     }`}
                 >
                     <button
-                        className="mb-3 inline-block w-1/3 rounded px-6 pb-2 pt-2.5 text-3xl font-medium uppercase leading-normal bg-midnightBlue-200 text-slate-100 shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+                        className="mb-3 inline-block sm:w-1/3 w-1/2 rounded px-6 pb-2 pt-2.5 sm:text-3xl text-xl font-medium uppercase leading-normal bg-midnightBlue-200 text-slate-100 shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
                         type="button"
                         onClick={() => {
                             // handleSubmit();

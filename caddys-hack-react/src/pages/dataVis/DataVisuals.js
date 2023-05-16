@@ -11,7 +11,7 @@ const DataVis = () => {
     const { userId } = jwt_decode(token);
     const [golfShots, setGolfShots] = useState([]);
     const [totalShots, setTotalShots] = useState(0);
-    const [golfClubId, setGolfClubId] = useState('');
+    const [golfClubId, setGolfClubId] = useState(0);
     const [golfClubName, setGolfClubName] = useState('');
 
     useEffect(() => {

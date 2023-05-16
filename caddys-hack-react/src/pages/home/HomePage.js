@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const HomePage = () => {
+    const [isOpen, setOpen] = useState(false);
+
+    const handleDropDown = () => {
+        setOpen(!isOpen);
+    };
+
     return (
         <div className="text-slate-50">
             <header className="bg-cover bg-left bg-hero-pattern xl:h-[800px] h-[600px]">
@@ -8,7 +14,7 @@ const HomePage = () => {
                     <div className="text-2xl font-semibold text-midnightBlue-200">
                         <p>Caddy's Hack</p>
                     </div>
-                    <ul className="flex space-x-4">
+                    <ul className="sm:flex space-x-4 hidden">
                         <li>
                             <a href={'/caddytrack'}>
                                 <span className="text-xl text-midnightBlue-200">
@@ -17,7 +23,7 @@ const HomePage = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="#_">
+                            <a href={'/register'}>
                                 <span className="text-xl text-midnightBlue-200">
                                     Sign Up
                                 </span>
@@ -31,11 +37,67 @@ const HomePage = () => {
                             </a>
                         </li>
                     </ul>
+                    <div className="z-[51] dropdown sm:hidden">
+                        <button
+                            className="z-51 text-white bg-transparent hover:bg-slate-600/30 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+                            onClick={handleDropDown}
+                        >
+                            <svg
+                                className="w-7 h-7"
+                                aria-hidden="true"
+                                fill="none"
+                                stroke="black"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+                        </button>
+
+                        <div
+                            id="dropdown"
+                            className={`absolute right-0 mr-5 z-51 w-44 bg-slate-600/80  text-white rounded divide-y divide-gray-100 shadow ${
+                                isOpen ? 'block' : 'hidden'
+                            }`}
+                        >
+                            <ul className=" z-51 w-44 bg-slate-600/20  rounded divide-y divide-gray-100 shadow ">
+                                <li>
+                                    <a
+                                        href={'/caddytrack'}
+                                        className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
+                                    >
+                                        Caddy Track
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={'/register'}
+                                        className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
+                                    >
+                                        Sign Up
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={'/login'}
+                                        className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
+                                    >
+                                        Login
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </nav>
                 <section className="grid sm:grid-cols-2 grid-cols-1 px-10 xl:h-[750px] lg:h-[550px] h-[350px] justify-items-center">
                     <div className="main-empty"></div>
                     <div className="grid grid-cols-1 place-content-center max-w-lg translate-y-[50px]">
-                        <div className="pb-10 pt-3 px-8 bg-black/10 rounded-lg">
+                        <div className="pb-10 pt-3 px-8 sm:bg-black/20 bg-black/50 rounded-lg">
                             <h1 className="lg:text-5xl text-4xl font-bold sm:text-right text-center">
                                 Track Your Shots.
                             </h1>
@@ -50,7 +112,7 @@ const HomePage = () => {
                         </div>
                         <div className="mt-3 grid sm:grid-cols-2 grid-cols-1 justify-items-center gap-4">
                             <a
-                                href="#_"
+                                href={'/register'}
                                 className="w-40 relative rounded-full px-5 py-2.5 overflow-hidden group bg-midnightBlue-200 relative hover:bg-gradient-to-r hover:from-midnightBlue-200 hover:to-midnightBlue-100 text-white hover:ring-2 hover:ring-offset-2 hover:ring-midnightBlue-100 transition-all ease-out duration-300"
                             >
                                 <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
@@ -60,7 +122,7 @@ const HomePage = () => {
                             </a>
 
                             <a
-                                href="#_"
+                                href="#easy2use"
                                 className="w-40 relative rounded-full px-5 py-2.5 overflow-hidden group bg-slate-300 relative hover:bg-gradient-to-r hover:from-slate-300 hover:to-slate-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-slate-400 transition-all ease-out duration-300"
                             >
                                 <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
@@ -72,7 +134,10 @@ const HomePage = () => {
                     </div>
                 </section>
             </header>
-            <main className="bg-cover bg-left bg-mainTopog-pattern">
+            <main
+                className="bg-cover bg-left bg-mainTopog-pattern"
+                id="easy2use"
+            >
                 <div className="bg-midnightBlue-300/95">
                     <section className="grid sm:grid-cols-2 grid-cols-1 px-10 h-full justify-items-center">
                         <div className="grid grid-cols-1 max-w-lg px-10 sm:pt-[100px] pt-12 h-full">
@@ -95,7 +160,7 @@ const HomePage = () => {
                             </div>
                             <div className="py-5">
                                 <a
-                                    href="#_"
+                                    href={'/caddytrack'}
                                     className="relative rounded-full px-5 py-2.5 overflow-hidden group bg-slate-300 relative hover:bg-gradient-to-r hover:from-slate-300 hover:to-slate-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-slate-400 transition-all ease-out duration-300"
                                 >
                                     <span className="relative text-midnightBlue-200 font-semibold text-xl">
@@ -179,11 +244,11 @@ const HomePage = () => {
                             </div>
                             <div className="sm:mb-12 mb-none py-5">
                                 <a
-                                    href="#_"
+                                    href={'/login'}
                                     className="relative rounded-full px-5 py-2.5 overflow-hidden group bg-slate-300 relative hover:bg-gradient-to-r hover:from-slate-300 hover:to-slate-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-slate-400 transition-all ease-out duration-300"
                                 >
                                     <span className="relative text-midnightBlue-200 font-semibold sm:text-xl">
-                                        Sign In To See Shots
+                                        See Your Shots
                                     </span>
                                 </a>
                             </div>
