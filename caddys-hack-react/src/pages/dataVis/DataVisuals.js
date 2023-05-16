@@ -86,8 +86,6 @@ const DataVis = () => {
                 setGolfShots(shotLocation);
                 setTotalShots(res.data.length);
             }
-            console.log(shotLocation);
-            console.log(res.data.length);
         };
         getShotData();
     }, [golfClubId]);
@@ -279,7 +277,7 @@ const DataVis = () => {
                     </div>
                 </div>
                 <div className="flex flex-col flex-grow">
-                    <div className="flex items-center flex-shrink-0 h-16 px-8 border-b border-gray-300">
+                    <div className="flex items-center flex-shrink-0 h-16 border-b border-gray-300">
                         <h1 className="text-lg font-medium">Shot Data</h1>
                         <button className="flex items-center justify-center h-10 px-4 ml-auto text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300">
                             Dashboard
@@ -321,18 +319,20 @@ const DataVis = () => {
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                             <div className="md:col-span-2 lg:col-span-3 h-[75px] bg-white/60 border border-midnightBlue-300/50 rounded-lg w-full lg:w-1/3 m-auto">
                                 <div className="h-full grid justify-items-center text-midnightBlue-200">
-                                    <h3 className="text-3xl font-bold m-auto">
-                                        {golfClubName}
+                                    <h3 className="text-center text-3xl font-bold m-auto">
+                                        {golfClubName
+                                            ? golfClubName
+                                            : 'Choose a Club'}
                                     </h3>
                                     <p className="text-right m-auto">
                                         Total Shots:{' '}
-                                        {totalShots === 0 ? totalShots : '0'}
+                                        {totalShots === 0 ? '0' : totalShots}
                                     </p>
                                 </div>
                             </div>
                             <div className="h-[250px] bg-white/60 border border-midnightBlue-300/50 rounded-lg">
                                 <div className="h-full grid grid-rows-3 justify-items-center text-midnightBlue-200">
-                                    <h3 className="text-3xl font-semibold m-auto">
+                                    <h3 className="text-center text-3xl font-semibold m-auto">
                                         Long & Left
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
@@ -352,7 +352,7 @@ const DataVis = () => {
                             </div>
                             <div className="h-[250px] bg-white/60 border border-midnightBlue-300/50 rounded-lg">
                                 <div className="h-full grid grid-rows-3 justify-items-center text-midnightBlue-200">
-                                    <h3 className="text-3xl font-semibold m-auto">
+                                    <h3 className="text-center text-3xl font-semibold m-auto">
                                         Long & On Target
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
@@ -372,7 +372,7 @@ const DataVis = () => {
                             </div>
                             <div className="h-[250px] bg-white/60 border border-midnightBlue-300/50 rounded-lg">
                                 <div className="h-full grid grid-rows-3 justify-items-center text-midnightBlue-200">
-                                    <h3 className="text-3xl font-semibold m-auto">
+                                    <h3 className="text-center text-3xl font-semibold m-auto">
                                         Long & Right
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
@@ -392,7 +392,7 @@ const DataVis = () => {
                             </div>
                             <div className="h-[250px] bg-white/60 border border-midnightBlue-300/50 rounded-lg">
                                 <div className="h-full grid grid-rows-3 justify-items-center text-midnightBlue-200">
-                                    <h3 className="text-3xl font-semibold m-auto">
+                                    <h3 className="text-center text-3xl font-semibold m-auto">
                                         Pin High & Left
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
@@ -412,7 +412,7 @@ const DataVis = () => {
                             </div>
                             <div className="h-[250px] bg-white/60 border border-midnightBlue-300/50 rounded-lg">
                                 <div className="h-full grid grid-rows-3 justify-items-center text-midnightBlue-200">
-                                    <h3 className="text-3xl font-semibold m-auto">
+                                    <h3 className="text-center text-3xl font-semibold m-auto">
                                         Perfect
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
@@ -432,7 +432,7 @@ const DataVis = () => {
                             </div>
                             <div className="h-[250px] bg-white/60 border border-midnightBlue-300/50 rounded-lg">
                                 <div className="h-full grid grid-rows-3 justify-items-center text-midnightBlue-200">
-                                    <h3 className="text-3xl font-semibold m-auto">
+                                    <h3 className="text-center text-3xl font-semibold m-auto">
                                         Pin High & Right
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
@@ -452,7 +452,7 @@ const DataVis = () => {
                             </div>
                             <div className="h-[250px] bg-white/60 border border-midnightBlue-300/50 rounded-lg">
                                 <div className="h-full grid grid-rows-3 justify-items-center text-midnightBlue-200">
-                                    <h3 className="text-3xl font-semibold m-auto">
+                                    <h3 className="text-center text-3xl font-semibold m-auto">
                                         Short & Left
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
@@ -472,7 +472,7 @@ const DataVis = () => {
                             </div>
                             <div className="h-[250px] bg-white/60 border border-midnightBlue-300/50 rounded-lg">
                                 <div className="h-full grid grid-rows-3 justify-items-center text-midnightBlue-200">
-                                    <h3 className="text-3xl font-semibold m-auto">
+                                    <h3 className="text-center text-3xl font-semibold m-auto">
                                         Short & On Target
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
@@ -492,7 +492,7 @@ const DataVis = () => {
                             </div>
                             <div className="h-[250px] bg-white/60 border border-midnightBlue-300/50 rounded-lg">
                                 <div className="h-full grid grid-rows-3 justify-items-center text-midnightBlue-200">
-                                    <h3 className="text-3xl font-semibold m-auto">
+                                    <h3 className="text-center text-3xl font-semibold m-auto">
                                         Short & Right
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
