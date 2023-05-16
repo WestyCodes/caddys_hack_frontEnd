@@ -10,14 +10,84 @@ const DataVis = () => {
     const { token } = useAuth();
     const { userId } = jwt_decode(token);
     const [golfShots, setGolfShots] = useState([]);
+    const [totalShots, setTotalShots] = useState(0);
     const [golfClubId, setGolfClubId] = useState('');
     const [golfClubName, setGolfClubName] = useState('');
 
     useEffect(() => {
+        setGolfShots({
+            leftLong: 0,
+            straightLong: 0,
+            rightLong: 0,
+            leftPH: 0,
+            straightPH: 0,
+            rightPH: 0,
+            leftShort: 0,
+            straightShort: 0,
+            rightShort: 0,
+            totalShots: 0,
+        });
+        setTotalShots(0);
         const getShotData = async () => {
             const res = await get(`users/${userId}/golfshot/${golfClubId}`);
-            console.log(res);
-            if (res.status === 'success') setGolfShots(res.data);
+
+            const shotLocation = {
+                leftLong: 0,
+                straightLong: 0,
+                rightLong: 0,
+                leftPH: 0,
+                straightPH: 0,
+                rightPH: 0,
+                leftShort: 0,
+                straightShort: 0,
+                rightShort: 0,
+                totalShots: 0,
+            };
+
+            function findShots(shot) {
+                let newObj = [];
+
+                for (var key in shot) {
+                    if (shot[key]) newObj.push(key);
+                }
+                return newObj;
+            }
+
+            for (let i = 0; i < res.data?.length; i++) {
+                const shot = findShots(res.data[i]);
+                if (shot.includes('left') && shot.includes('long')) {
+                    shotLocation.leftLong++;
+                } else if (shot.includes('onTarget') && shot.includes('long')) {
+                    shotLocation.straightLong++;
+                } else if (shot.includes('right') && shot.includes('long')) {
+                    shotLocation.rightLong++;
+                } else if (shot.includes('left') && shot.includes('pinHigh')) {
+                    shotLocation.leftPH++;
+                } else if (
+                    shot.includes('onTarget') &&
+                    shot.includes('pinHigh')
+                ) {
+                    shotLocation.straightPH++;
+                } else if (shot.includes('right') && shot.includes('pinHigh')) {
+                    shotLocation.rightPH++;
+                } else if (shot.includes('left') && shot.includes('short')) {
+                    shotLocation.leftShort++;
+                } else if (
+                    shot.includes('onTarget') &&
+                    shot.includes('short')
+                ) {
+                    shotLocation.straightShort++;
+                } else if (shot.includes('right') && shot.includes('short')) {
+                    shotLocation.rightShort++;
+                }
+            }
+
+            if (res.status === 'success') {
+                setGolfShots(shotLocation);
+                setTotalShots(res.data.length);
+            }
+            console.log(shotLocation);
+            console.log(res.data.length);
         };
         getShotData();
     }, [golfClubId]);
@@ -254,6 +324,10 @@ const DataVis = () => {
                                     <h3 className="text-3xl font-bold m-auto">
                                         {golfClubName}
                                     </h3>
+                                    <p className="text-right m-auto">
+                                        Total Shots:{' '}
+                                        {totalShots === 0 ? totalShots : '0'}
+                                    </p>
                                 </div>
                             </div>
                             <div className="h-[250px] bg-white/60 border border-midnightBlue-300/50 rounded-lg">
@@ -262,10 +336,17 @@ const DataVis = () => {
                                         Long & Left
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
-                                        76%
+                                        {totalShots === 0
+                                            ? '0'
+                                            : (
+                                                  (golfShots.leftLong /
+                                                      totalShots) *
+                                                  100
+                                              ).toFixed(2)}
+                                        %
                                     </p>
                                     <p className="text-right m-auto">
-                                        Total Shots: 102
+                                        Total Shots: {golfShots.leftLong}
                                     </p>
                                 </div>
                             </div>
@@ -275,10 +356,17 @@ const DataVis = () => {
                                         Long & On Target
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
-                                        76%
+                                        {totalShots === 0
+                                            ? '0'
+                                            : (
+                                                  (golfShots.straightLong /
+                                                      totalShots) *
+                                                  100
+                                              ).toFixed(2)}
+                                        %
                                     </p>
                                     <p className="text-right m-auto">
-                                        Total Shots: 102
+                                        Total Shots: {golfShots.straightLong}
                                     </p>
                                 </div>
                             </div>
@@ -288,10 +376,17 @@ const DataVis = () => {
                                         Long & Right
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
-                                        76%
+                                        {totalShots === 0
+                                            ? '0'
+                                            : (
+                                                  (golfShots.rightLong /
+                                                      totalShots) *
+                                                  100
+                                              ).toFixed(2)}
+                                        %
                                     </p>
                                     <p className="text-right m-auto">
-                                        Total Shots: 102
+                                        Total Shots: {golfShots.rightLong}
                                     </p>
                                 </div>
                             </div>
@@ -301,10 +396,17 @@ const DataVis = () => {
                                         Pin High & Left
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
-                                        76%
+                                        {totalShots === 0
+                                            ? '0'
+                                            : (
+                                                  (golfShots.leftPH /
+                                                      totalShots) *
+                                                  100
+                                              ).toFixed(2)}
+                                        %
                                     </p>
                                     <p className="text-right m-auto">
-                                        Total Shots: 102
+                                        Total Shots: {golfShots.leftPH}
                                     </p>
                                 </div>
                             </div>
@@ -314,10 +416,17 @@ const DataVis = () => {
                                         Perfect
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
-                                        76%
+                                        {totalShots === 0
+                                            ? '0'
+                                            : (
+                                                  (golfShots.straightPH /
+                                                      totalShots) *
+                                                  100
+                                              ).toFixed(2)}
+                                        %
                                     </p>
                                     <p className="text-right m-auto">
-                                        Total Shots: 102
+                                        Total Shots: {golfShots.straightPH}
                                     </p>
                                 </div>
                             </div>
@@ -327,10 +436,17 @@ const DataVis = () => {
                                         Pin High & Right
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
-                                        76%
+                                        {totalShots === 0
+                                            ? '0'
+                                            : (
+                                                  (golfShots.rightPH /
+                                                      totalShots) *
+                                                  100
+                                              ).toFixed(2)}
+                                        %
                                     </p>
                                     <p className="text-right m-auto">
-                                        Total Shots: 102
+                                        Total Shots: {golfShots.rightPH}
                                     </p>
                                 </div>
                             </div>
@@ -340,10 +456,17 @@ const DataVis = () => {
                                         Short & Left
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
-                                        76%
+                                        {totalShots === 0
+                                            ? '0'
+                                            : (
+                                                  (golfShots.leftShort /
+                                                      totalShots) *
+                                                  100
+                                              ).toFixed(2)}
+                                        %
                                     </p>
                                     <p className="text-right m-auto">
-                                        Total Shots: 102
+                                        Total Shots: {golfShots.leftShort}
                                     </p>
                                 </div>
                             </div>
@@ -353,10 +476,17 @@ const DataVis = () => {
                                         Short & On Target
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
-                                        76%
+                                        {totalShots === 0
+                                            ? '0'
+                                            : (
+                                                  (golfShots.straightShort /
+                                                      totalShots) *
+                                                  100
+                                              ).toFixed(2)}
+                                        %
                                     </p>
                                     <p className="text-right m-auto">
-                                        Total Shots: 102
+                                        Total Shots: {golfShots.straightShort}
                                     </p>
                                 </div>
                             </div>
@@ -366,10 +496,17 @@ const DataVis = () => {
                                         Short & Right
                                     </h3>
                                     <p className="m-auto text-6xl font-bold">
-                                        76%
+                                        {totalShots === 0
+                                            ? '0'
+                                            : (
+                                                  (golfShots.rightShort /
+                                                      totalShots) *
+                                                  100
+                                              ).toFixed(2)}
+                                        %
                                     </p>
                                     <p className="text-right m-auto">
-                                        Total Shots: 102
+                                        Total Shots: {golfShots.rightShort}
                                     </p>
                                 </div>
                             </div>
