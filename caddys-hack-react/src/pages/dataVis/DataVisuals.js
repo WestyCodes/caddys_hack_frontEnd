@@ -2,24 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { get } from '../../service/apiClient';
 import jwt_decode from 'jwt-decode';
 import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const DataVis = () => {
+    const navigate = useNavigate();
+    const { onLogout } = useAuth();
     const { token } = useAuth();
     const { userId } = jwt_decode(token);
-    const [golfShots, setGolfShots] = useState({});
+    const [golfShots, setGolfShots] = useState([]);
+    const [golfClubId, setGolfClubId] = useState('');
+    const [golfClubName, setGolfClubName] = useState('');
 
-    // useEffect(() => {
-    //     const getUserInfo = async () => {
-    //         const res = await get(`users/${userId}`);
-    //         setGolfShots(res.data.user);
-    //     };
-    //     getUserInfo();
-    // }, [userId]);
+    useEffect(() => {
+        const getShotData = async () => {
+            const res = await get(`users/${userId}/golfshot/${golfClubId}`);
+            console.log(res);
+            if (res.status === 'success') setGolfShots(res.data);
+        };
+        getShotData();
+    }, [golfClubId]);
 
     return (
         <div>
             <div className="flex w-screen h-screen text-slate-200 bg-midnightBlue-200">
-                <div className="flex flex-col w-56 border-r border-slate-300">
+                <div className="flex flex-col w-56">
                     <button className="relative text-sm focus:outline-none group">
                         <div className="flex items-center justify-between w-full h-16 px-4 border-b border-gray-300 hover:bg-blue-300 hover:text-midnightBlue-300">
                             <span className="font-bold text-xl">
@@ -63,84 +69,140 @@ const DataVis = () => {
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(1);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">Driver</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(2);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">3 Wood</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(3);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">3 Hybrid</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(4);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">4 Iron</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(5);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">5 Iron</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(6);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">6 Iron</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(7);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">7 Iron</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(8);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">8 Iron</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(9);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">9 Iron</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(10);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">Pitching Wedge</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(11);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">Gap Wedge</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(12);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">Sand Wedge</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(13);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">Lob Wedge</span>
                         </a>
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             href="#_"
+                            onClick={(e) => {
+                                setGolfClubId(14);
+                                setGolfClubName(e.target.innerText);
+                            }}
                         >
                             <span className="leading-none">Putter</span>
                         </a>
@@ -152,7 +214,10 @@ const DataVis = () => {
                         <button className="flex items-center justify-center h-10 px-4 ml-auto text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300">
                             Dashboard
                         </button>
-                        <button className="flex items-center justify-center h-10 px-4 ml-2 text-sm font-medium bg-slate-300 rounded hover:bg-blue-300 text-midnightBlue-300">
+                        <button
+                            className="flex items-center justify-center h-10 px-4 ml-2 text-sm font-medium bg-slate-300 rounded hover:bg-blue-300 text-midnightBlue-300"
+                            onClick={() => navigate('/caddytrack')}
+                        >
                             Caddy Track
                         </button>
                         <button className="relative ml-2 text-sm focus:outline-none group">
@@ -174,7 +239,7 @@ const DataVis = () => {
                             </div>
                             <div className="absolute right-0 flex-col items-start hidden w-40 pb-1 bg-white border border-gray-300 shadow-lg group-focus:flex">
                                 <a
-                                    className="w-full px-4 py-2 text-left hover:bg-blue-300"
+                                    className="w-full px-4 py-2 text-left hover:bg-blue-300 text-midnightBlue-300"
                                     href="#_"
                                 >
                                     Download
@@ -184,6 +249,13 @@ const DataVis = () => {
                     </div>
                     <div className="flex-grow p-6 overflow-auto bg-golf-course bg-cover bg-center">
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div className="md:col-span-2 lg:col-span-3 h-[75px] bg-white/60 border border-midnightBlue-300/50 rounded-lg w-full lg:w-1/3 m-auto">
+                                <div className="h-full grid justify-items-center text-midnightBlue-200">
+                                    <h3 className="text-3xl font-bold m-auto">
+                                        {golfClubName}
+                                    </h3>
+                                </div>
+                            </div>
                             <div className="h-[250px] bg-white/60 border border-midnightBlue-300/50 rounded-lg">
                                 <div className="h-full grid grid-rows-3 justify-items-center text-midnightBlue-200">
                                     <h3 className="text-3xl font-semibold m-auto">
