@@ -11,6 +11,8 @@ module.exports = {
                 'trackerbg-pattern':
                     "url('../public/assets/abstract_bg_altered.png')",
                 '18th-hole': "url('../public/assets/18th_hole.png')",
+                'magnolia-lane': "url('../public/assets/magnolialane.jpg')",
+                'golf-course': "url('../public/assets/golf_course.png')",
             },
             colors: {
                 midnightBlue: {

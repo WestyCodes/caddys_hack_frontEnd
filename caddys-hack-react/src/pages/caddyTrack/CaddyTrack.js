@@ -35,7 +35,8 @@ const CaddyTrack = () => {
 
     const handleCreateShot = async () => {
         const res = await onCreateShot(createShot());
-        res.status === 'fail'
+        console.log(res);
+        res.status === 'error'
             ? console.log('It failed')
             : console.log('It Worked');
     };
@@ -86,7 +87,6 @@ const CaddyTrack = () => {
         }
 
         const shotText = `Your golf shot was ${shotDir} target, and ${shotLength}`;
-        console.log(shotText);
         if (shotError) {
             return 'There was an error with the shot, refresh and try again.';
         } else {
@@ -492,7 +492,7 @@ const CaddyTrack = () => {
                     }`}
                 >
                     <button
-                        className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-3xl font-medium uppercase leading-normal bg-midnightBlue-200 text-slate-100 shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+                        className="mb-3 inline-block w-1/3 rounded px-6 pb-2 pt-2.5 text-3xl font-medium uppercase leading-normal bg-midnightBlue-200 text-slate-100 shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
                         type="button"
                         onClick={() => {
                             // handleSubmit();

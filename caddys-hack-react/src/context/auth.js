@@ -67,7 +67,7 @@ const AuthProvider = ({ children }) => {
         } else if (status === 'success') {
             const res = await login(email, password);
             setToken(res.data.token);
-            navigate('/verification');
+            navigate('/');
             return status;
         }
     };
@@ -83,13 +83,7 @@ const AuthProvider = ({ children }) => {
 
     const handleCreateShot = async (shotData) => {
         const { userId } = jwt_decode(token);
-        const res = await createGolfShot(userId, shotData);
-        const status = res.status;
-        if (status === 'fail') {
-            return status;
-        } else if (status === 'success') {
-            return res;
-        }
+        return await createGolfShot(userId, shotData);
     };
 
     const value = {

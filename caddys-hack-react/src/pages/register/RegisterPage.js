@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useAuth from '../../hooks/useAuth';
-import './login.css';
 
-const Login = () => {
+const Register = () => {
     const navigate = useNavigate();
-    const { onLogin } = useAuth();
+
+    const { onRegister } = useAuth();
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [error, setError] = useState(null);
 
@@ -15,8 +15,8 @@ const Login = () => {
         setFormData({ ...formData, [id]: value });
     };
 
-    const handleLogin = async () => {
-        const res = await onLogin(formData.email, formData.password);
+    const handleRegister = async () => {
+        const res = await onRegister(formData.email, formData.password);
         res.status === 'fail' ? setError(true) : setError(false);
     };
 
@@ -42,7 +42,7 @@ const Login = () => {
 
                                         <form>
                                             <p className="mb-4">
-                                                Please login to your account
+                                                Please register an account
                                             </p>
 
                                             <div className="relative z-0 w-full mb-6 group">
@@ -89,48 +89,52 @@ const Login = () => {
                                                 <button
                                                     className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal bg-midnightBlue-200 text-slate-100 shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
                                                     type="button"
-                                                    onClick={handleLogin}
+                                                    onClick={handleRegister}
                                                 >
-                                                    Log in
+                                                    Sign Up
                                                 </button>
 
                                                 <a href="#!">
-                                                    Forgot password?
+                                                    Terms and Conditions
                                                 </a>
                                             </div>
 
                                             <div className="flex items-center justify-between pb-6">
                                                 <p className="mb-0 mr-2">
-                                                    Don't have an account?
+                                                    Have an account?
                                                 </p>
                                                 <button
                                                     type="button"
                                                     className="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700"
                                                     onClick={() => {
-                                                        navigate('/register');
+                                                        navigate('/login');
                                                     }}
                                                 >
-                                                    Register
+                                                    Log In
                                                 </button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
 
-                                <div className="hidden sm:flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-18th-hole bg-top bg-cover">
+                                <div className="hidden sm:flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-magnolia-lane bg-top bg-cover">
                                     <div className="px-4 py-6 text-slate-100 md:mx-6 md:p-12 bg-slate-900/50 rounded-3xl">
                                         <h4 className="mb-6 text-xl font-semibold">
-                                            Take control of your game and
-                                            streamline your practise!
+                                            Register and use all features for
+                                            FREE
                                         </h4>
                                         <p className="text-sm">
-                                            Caddy's Hack is a tool for golfer's
-                                            of all skill levels. Track every
-                                            golf shot, visualise your data,
-                                            stream line your practise, and take
-                                            control of your game. Caddy's Hack
-                                            will be there for you, through all
-                                            shots, thick and thin.
+                                            Caddy's Hack aids golfers by
+                                            analyzing your shot data over time,
+                                            allowing you to pinpoint your
+                                            strengths and weaknesses accurately.
+                                            Armed with this knowledge, adjust
+                                            your club choices and shot
+                                            directions strategically, increasing
+                                            your chances of hitting the target
+                                            consistently. With Caddy's Hack, you
+                                            can elevate your game to new
+                                            heights.
                                         </p>
                                     </div>
                                 </div>
@@ -143,4 +147,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
