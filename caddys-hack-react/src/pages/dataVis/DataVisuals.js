@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const DataVis = () => {
     const navigate = useNavigate();
-    const { onLogout } = useAuth();
+    // const { onLogout } = useAuth();
     const { token } = useAuth();
     const { userId } = jwt_decode(token);
     const [golfShots, setGolfShots] = useState([]);
@@ -88,7 +88,7 @@ const DataVis = () => {
             }
         };
         getShotData();
-    }, [golfClubId]);
+    }, [golfClubId, userId]);
 
     return (
         <div>
@@ -285,6 +285,7 @@ const DataVis = () => {
                         <button className="flex items-center justify-center h-10 px-4 ml-auto text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300">
                             Dashboard
                         </button>
+
                         <button
                             className="flex items-center justify-center h-10 px-4 ml-2 text-sm font-medium bg-slate-300 rounded hover:bg-blue-300 text-midnightBlue-300"
                             onClick={() => navigate('/caddytrack')}

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useAuth from '../../hooks/useAuth';
-import './login.css';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -22,7 +21,7 @@ const Login = () => {
 
     return (
         <section className="sm:h-screen h-full bg-midnightBlue-300">
-            <div className="container h-full p-10">
+            <div className="container h-full p-10 mx-auto">
                 <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800">
                     <div className="w-full">
                         <div className="block rounded-lg bg-slate-100 shadow-lg">

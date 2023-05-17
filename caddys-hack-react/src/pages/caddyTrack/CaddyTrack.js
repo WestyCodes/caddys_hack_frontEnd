@@ -1,11 +1,10 @@
+import jwt_decode from 'jwt-decode';
 import React, { useState, useEffect } from 'react';
 import { get } from '../../service/apiClient';
-
 import useAuth from '../../hooks/useAuth';
-import jwt_decode from 'jwt-decode';
 
 const CaddyTrack = () => {
-    const { token, onCreateShot } = useAuth();
+    const { token, onCreateShot, onLogout } = useAuth();
     const { userId } = jwt_decode(token);
 
     const [user, setUser] = useState({});
@@ -15,15 +14,13 @@ const CaddyTrack = () => {
     const [shotDirection, setShotDirection] = useState(true);
     const [shotDistance, setShotDistance] = useState(false);
     const [confirmShot, setConfirmShot] = useState(false);
-    const [shotParagraph, setShotParagraph] = useState('');
+    // const [shotParagraph, setShotParagraph] = useState('');
     const [left, setLeft] = useState(false);
     const [right, setRight] = useState(false);
     const [onTarget, setOnTarget] = useState(false);
     const [long, setLong] = useState(false);
     const [short, setShort] = useState(false);
     const [pinHigh, setPinHigh] = useState(false);
-
-    const { onLogout } = useAuth();
 
     const handleDropDown = () => {
         setOpen(!isOpen);
@@ -503,9 +500,10 @@ const CaddyTrack = () => {
                         confirmShot ? 'block' : 'hidden'
                     }`}
                 >
-                    <p className="bg-slate-900/60 p-2 sm:text-xl text-sm text-slate-100 font-semibold rounded m-2">
+                    <p className="z-10 bg-slate-900/60 p-2 sm:text-xl text-sm text-slate-100 font-semibold rounded m-2">
                         {createShotText()}
                     </p>
+
                     <button
                         className="mb-3 inline-block sm:w-1/3 w-1/2 rounded px-6 pb-2 pt-2.5 sm:text-3xl text-xl font-medium uppercase leading-normal bg-midnightBlue-200 text-slate-100 shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
                         type="button"
