@@ -225,7 +225,7 @@ const HomePage = () => {
                                     <p className="py-5">
                                         The basic view allows you to log a shot
                                         in just 4 taps, perfect for when you're
-                                        walking down the fairway
+                                        walking down the fairway.
                                     </p>
                                     <ol className="">
                                         <li>Choose your club!</li>

@@ -62,6 +62,16 @@ const CaddyTrack = () => {
         console.log(shot);
         return shot;
     };
+    const undoShot = () => {
+        setLeft(false);
+        setRight(false);
+        setOnTarget(false);
+        setLong(false);
+        setShort(false);
+        setPinHigh(false);
+        setShotDirection(true);
+        console.log('Shot Cancelled');
+    };
 
     const createShotText = () => {
         let shotDir = null;
@@ -90,7 +100,7 @@ const CaddyTrack = () => {
         if (shotError) {
             return 'There was an error with the shot, refresh and try again.';
         } else {
-            return setShotParagraph(shotText);
+            return shotText;
         }
     };
 
@@ -483,25 +493,40 @@ const CaddyTrack = () => {
                         </g>
                     </svg>
                 </div>
-                <div></div>
-                <div className=""></div>
-                <div></div>
+                <div
+                    className={`col-span-3 sm:block ${
+                        confirmShot ? 'hidden' : 'block'
+                    }`}
+                ></div>
                 <div
                     className={`px-5 col-span-3 grid grid-cols-1 justify-items-center ${
                         confirmShot ? 'block' : 'hidden'
                     }`}
                 >
+                    <p className="bg-slate-900/60 p-2 sm:text-xl text-sm text-slate-100 font-semibold rounded m-2">
+                        {createShotText()}
+                    </p>
                     <button
                         className="mb-3 inline-block sm:w-1/3 w-1/2 rounded px-6 pb-2 pt-2.5 sm:text-3xl text-xl font-medium uppercase leading-normal bg-midnightBlue-200 text-slate-100 shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
                         type="button"
                         onClick={() => {
                             // handleSubmit();
                             setConfirmShot(false);
-                            createShotText();
                             handleCreateShot();
                         }}
                     >
-                        Confirm!
+                        Confirm
+                    </button>
+                    <button
+                        className="mb-3 inline-block sm:w-1/4 w-1/3 rounded px-6 pb-2 pt-2.5 sm:text-1xl text-md font-medium uppercase leading-normal text-midnightBlue-200 bg-slate-300 shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+                        type="button"
+                        onClick={() => {
+                            // handleSubmit();
+                            setConfirmShot(false);
+                            undoShot();
+                        }}
+                    >
+                        Cancel
                     </button>
                 </div>
                 <div
