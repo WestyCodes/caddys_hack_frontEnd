@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const DataVis = () => {
     const navigate = useNavigate();
     // const { onLogout } = useAuth();
-    const { token } = useAuth();
+    const { token, onLogout } = useAuth();
     const { userId } = jwt_decode(token);
     const [golfShots, setGolfShots] = useState([]);
     const [totalShots, setTotalShots] = useState(0);
@@ -282,8 +282,11 @@ const DataVis = () => {
                 <div className="flex flex-col flex-grow">
                     <div className="flex items-center flex-shrink-0 h-16 border-b border-gray-300">
                         <h1 className="text-lg font-medium">Shot Data</h1>
-                        <button className="flex items-center justify-center h-10 px-4 ml-auto text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300">
-                            Dashboard
+                        <button
+                            className="flex items-center justify-center h-10 px-4 ml-auto text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
+                            onClick={() => navigate('/')}
+                        >
+                            Home
                         </button>
 
                         <button
@@ -309,12 +312,15 @@ const DataVis = () => {
                                     />
                                 </svg>
                             </div>
-                            <div className="absolute right-0 flex-col items-start hidden w-40 pb-1 bg-white border border-gray-300 shadow-lg group-focus:flex">
+                            <div
+                                onClick={() => onLogout()}
+                                className="absolute right-0 flex-col items-start hidden w-40 pb-1 bg-white border border-gray-300 shadow-lg group-focus:flex"
+                            >
                                 <a
                                     className="w-full px-4 py-2 text-left hover:bg-blue-300 text-midnightBlue-300"
-                                    href="#_"
+                                    href={onLogout}
                                 >
-                                    Download
+                                    Logout
                                 </a>
                             </div>
                         </button>
