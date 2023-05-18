@@ -93,13 +93,13 @@ const DataVis = () => {
     return (
         <div>
             <div className="flex w-screen h-screen text-slate-200 bg-midnightBlue-200">
-                <div className="flex flex-col w-56">
+                <div className="flex flex-col sm:w-56 w-max">
                     <button
                         className="relative text-sm focus:outline-none group"
                         onClick={() => navigate('/')}
                     >
                         <div className="flex items-center justify-between w-full h-16 px-4 border-b border-gray-300 hover:bg-blue-300 hover:text-midnightBlue-300">
-                            <span className="font-bold text-xl">
+                            <span className="font-bold sm:text-xl text-md">
                                 Caddy's Hack
                             </span>
                             {/* <svg
@@ -279,9 +279,9 @@ const DataVis = () => {
                         </a>
                     </div>
                 </div>
-                <div className="flex flex-col flex-grow">
+                <div className="flex flex-col flex-grow w-max">
                     <div className="flex items-center flex-shrink-0 h-16 border-b border-gray-300">
-                        <h1 className="text-lg font-medium">Shot Data</h1>
+                        <h1 className="text-lg font-medium w-max">Shot Data</h1>
                         <button
                             className="flex items-center justify-center h-10 px-4 ml-auto text-sm font-medium rounded hover:bg-blue-300 hover:text-midnightBlue-300"
                             onClick={() => navigate('/')}
