@@ -48,13 +48,15 @@ const AuthProvider = ({ children }) => {
 
         localStorage.setItem('token', res.data.token);
         setToken(res.data.token);
-        setLoggedInUserInfo(res.data.user);
+        setLoggedInUserInfo(res.data.foundUser);
+        console.log(res.data.foundUser);
         navigate('/');
         return res;
     };
 
     const handleLogout = () => {
         localStorage.removeItem('token');
+        setLoggedInUserInfo({});
         setToken(null);
     };
 

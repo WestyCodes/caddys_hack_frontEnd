@@ -314,14 +314,13 @@ const DataVis = () => {
                             </div>
                             <div
                                 onClick={() => onLogout()}
-                                className="absolute right-0 flex-col items-start hidden w-40 pb-1 bg-white border border-gray-300 shadow-lg group-focus:flex"
+                                className="absolute right-0 flex-col items-start
+                                hidden w-40 pb-1 bg-white border border-gray-300
+                                shadow-lg group-focus:flex"
                             >
-                                <a
-                                    className="w-full px-4 py-2 text-left hover:bg-blue-300 text-midnightBlue-300"
-                                    href={onLogout}
-                                >
-                                    Logout
-                                </a>
+                                <div className="w-full px-4 py-2 text-left hover:bg-blue-300 text-midnightBlue-300">
+                                    <span>Logout</span>
+                                </div>
                             </div>
                         </button>
                     </div>

@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const HomePage = () => {
+    const { loggedInUserInfo, onLogout } = useAuth();
     const [isOpen, setOpen] = useState(false);
-
+    const [user, setUser] = useState({});
+    const navigate = useNavigate();
     const handleDropDown = () => {
         setOpen(!isOpen);
+    };
+
+    useEffect(() => {
+        setUser(loggedInUserInfo);
+    }, [loggedInUserInfo]);
+
+    const handleLogoutOrNot = () => {
+        if (user.id) {
+            return onLogout();
+        } else {
+            return navigate('/login');
+        }
     };
 
     return (
@@ -23,16 +39,19 @@ const HomePage = () => {
                             </a>
                         </li>
                         <li>
-                            <a href={'/register'}>
+                            <a href={user.id ? '/datavis' : '/register'}>
                                 <span className="text-xl text-midnightBlue-200">
-                                    Sign Up
+                                    {user.id ? 'Your Shots' : 'Sign Up'}
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a href={'/login'}>
-                                <span className="text-xl text-midnightBlue-200">
-                                    Log In
+                            <a href="#_">
+                                <span
+                                    className="text-xl text-midnightBlue-200"
+                                    onClick={() => handleLogoutOrNot()}
+                                >
+                                    {user.id ? 'Logout' : 'Login'}
                                 </span>
                             </a>
                         </li>
@@ -76,18 +95,23 @@ const HomePage = () => {
                                 </li>
                                 <li>
                                     <a
-                                        href={'/register'}
-                                        className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
+                                        href={
+                                            user.id ? '/datavis' : '/register'
+                                        }
                                     >
-                                        Sign Up
+                                        <span className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90">
+                                            {user.id ? 'Your Shots' : 'Sign Up'}
+                                        </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a
-                                        href={'/login'}
-                                        className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
-                                    >
-                                        Login
+                                    <a href="#_">
+                                        <span
+                                            className="hover:text-black text-white block py-2 px-4 hover:bg-gray-100/90"
+                                            onClick={() => handleLogoutOrNot()}
+                                        >
+                                            {user.id ? 'Logout' : 'Login'}
+                                        </span>
                                     </a>
                                 </li>
                             </ul>
