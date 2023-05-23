@@ -9,7 +9,17 @@ A Full Stack Application, made with React and TailwindCSS. The Back-End can be f
     -   [General info](#general-info)
     -   [Technologies](#technologies)
     -   [Setup](#setup)
-    -   [](#)
+        -   [UI Screenshots](#ui-screenshots)
+        -   [Desktop Screenshots of the Site](#desktop-screenshots-of-the-site)
+            -   [Home Page](#home-page)
+            -   [Login Page](#login-page)
+            -   [Register Page](#register-page)
+            -   [Tracker Page](#tracker-page)
+            -   [Data Visualisation Page](#data-visualisation-page)
+        -   [Mobile Screenshots](#mobile-screenshots)
+            -   [Mobile Home Page](#mobile-home-page)
+            -   [Mobile Login Page](#mobile-login-page)
+            -   [Mobile Tracker Page](#mobile-tracker-page)
 
 ## General info
 
@@ -35,8 +45,42 @@ $ npm start
 
 You will also need to download and install the backend which can be found [here](https://github.com/WestyCodes/caddys_hack_backEnd)
 
-##
+### UI Screenshots
 
-Images
+![CaddysHack](./public/assets/Caddys_hack_UI.png)
 
-[An Image](./public/assets/18th_hole.png)
+### Desktop Screenshots of the Site
+
+#### Home Page
+
+![Home Page](./public/assets/homePage.png)
+
+#### Login Page
+
+![Login Page](./public/assets/loginPage.png)
+
+#### Register Page
+
+![Register Page](./public/assets/registerPage.png)
+
+#### Tracker Page
+
+![Tracker Page](./public/assets/trackerPage.png)
+
+#### Data Visualisation Page
+
+![Data Vis](./public/assets/dataVisPage.png)
+
+### Mobile Screenshots
+
+#### Mobile Home Page
+
+![Home Page Mobile](./public/assets/homePageMobiles.png)
+
+#### Mobile Login Page
+
+![Login Page Mobile](./public/assets/loginPageMobile.png)
+
+#### Mobile Tracker Page
+
+![Tracker Page Mobile](./public/assets/trackerPageMobile.png)
