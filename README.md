@@ -9,7 +9,7 @@ A Full Stack Application, made with React and TailwindCSS. The Back-End can be f
     -   [General info](#general-info)
     -   [Technologies](#technologies)
     -   [Setup](#setup)
-        -   [UI Screenshots](#ui-screenshots)
+    -   [UI Screenshots](#ui-screenshots)
         -   [Desktop Screenshots of the Site](#desktop-screenshots-of-the-site)
             -   [Home Page](#home-page)
             -   [Login Page](#login-page)
@@ -45,7 +45,7 @@ $ npm start
 
 You will also need to download and install the backend which can be found [here](https://github.com/WestyCodes/caddys_hack_backEnd)
 
-### UI Screenshots
+## UI Screenshots
 
 ![CaddysHack](./public/assets/Caddys_hack_UI.png)
 
