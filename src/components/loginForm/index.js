@@ -1,4 +1,4 @@
-export default function LoginForm() {
+export default function LoginForm({ onChange, navigate, handleRegister }) {
     return (
         <form>
             <p className="mb-4">Please register an account</p>
