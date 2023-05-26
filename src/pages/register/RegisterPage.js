@@ -32,9 +32,10 @@ const Register = () => {
                                     <div className="md:mx-6 md:p-12">
                                         <LogoCard />
                                         <LoginForm
-                                            handleRegister={handleRegister}
+                                            handleForm={handleRegister}
                                             onChange={onChange}
                                             navigate={navigate}
+                                            login={false}
                                         />
                                     </div>
                                 </div>

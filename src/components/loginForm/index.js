@@ -1,7 +1,11 @@
-export default function LoginForm({ onChange, navigate, handleRegister }) {
+export default function LoginForm({ onChange, navigate, handleForm, login }) {
     return (
         <form>
-            <p className="mb-4">Please register an account</p>
+            <p className="mb-4">
+                {login
+                    ? `Please login to your account`
+                    : `Please register an account`}
+            </p>
 
             <div className="relative z-0 w-full mb-6 group">
                 <input
@@ -48,24 +52,28 @@ export default function LoginForm({ onChange, navigate, handleRegister }) {
                 <button
                     className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal bg-midnightBlue-200 text-slate-100 shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
                     type="button"
-                    onClick={handleRegister}
+                    onClick={handleForm}
                 >
-                    Sign Up
+                    {login ? `Sign In` : `Sign Up`}
                 </button>
 
-                <a href="#!">Terms and Conditions</a>
+                <a href="#!">
+                    {login ? `Forgot password?` : `Terms and Conditions`}
+                </a>
             </div>
 
             <div className="flex items-center justify-between pb-6">
-                <p className="mb-0 mr-2">Have an account?</p>
+                <p className="mb-0 mr-2">
+                    {login ? `Don't have an account?` : `Have an account?`}
+                </p>
                 <button
                     type="button"
                     className="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700"
                     onClick={() => {
-                        navigate('/login');
+                        login ? navigate('/register') : navigate('/login');
                     }}
                 >
-                    Log In
+                    {login ? `Register` : `Log In`}
                 </button>
             </div>
         </form>
