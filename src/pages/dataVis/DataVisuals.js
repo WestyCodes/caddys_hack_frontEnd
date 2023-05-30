@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 
 const DataVis = () => {
     const navigate = useNavigate();
-    // const { onLogout } = useAuth();
     const { token, onLogout } = useAuth();
     const { userId } = jwt_decode(token);
     const [golfShots, setGolfShots] = useState([]);
@@ -102,39 +101,7 @@ const DataVis = () => {
                             <span className="font-bold sm:text-xl text-md">
                                 Caddy's Hack
                             </span>
-                            {/* <svg
-                                className="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clipRule="evenodd"
-                                />
-                            </svg> */}
                         </div>
-                        {/* <div className="absolute z-10 flex-col items-start hidden w-full pb-1 bg-white shadow-lg group-focus:flex">
-                            <a
-                                className="w-full px-4 py-2 text-left hover:bg-blue-300"
-                                href="#_"
-                            >
-                                Menu Item 1
-                            </a>
-                            <a
-                                className="w-full px-4 py-2 text-left hover:bg-blue-300"
-                                href="#_"
-                            >
-                                Menu Item 1
-                            </a>
-                            <a
-                                className="w-full px-4 py-2 text-left hover:bg-blue-300"
-                                href="#_"
-                            >
-                                Menu Item 1
-                            </a>
-                        </div> */}
                     </button>
                     <div className="flex flex-col flex-grow p-4 overflow-auto">
                         <a
