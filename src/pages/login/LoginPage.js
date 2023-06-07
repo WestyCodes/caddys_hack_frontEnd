@@ -3,12 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import LogoCard from '../../components/logoCard';
 import LoginForm from '../../components/loginForm';
 import useAuth from '../../hooks/useAuth';
+import LoginRightCard from '../../components/loginRightCard';
 
 const Login = () => {
     const navigate = useNavigate();
     const { onLogin } = useAuth();
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [error, setError] = useState(null);
+
+    const HeadingText = `Take control of your game and streamline your practise!`;
+
+    const ParagraphText = `Caddy's Hack is a tool for golfer's of all skill levels.
+                    Track every golf shot, visualise your data, stream line your
+                    practise, and take control of your game. Caddy's Hack will
+                    be there for you, through all shots, thick and thin.`;
 
     const onChange = (e) => {
         const { id, value } = e.target;
@@ -38,24 +46,10 @@ const Login = () => {
                                         />
                                     </div>
                                 </div>
-
-                                <div className="hidden sm:flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-18th-hole bg-top bg-cover">
-                                    <div className="px-4 py-6 text-slate-100 md:mx-6 md:p-12 bg-slate-900/50 rounded-3xl">
-                                        <h4 className="mb-6 text-xl font-semibold">
-                                            Take control of your game and
-                                            streamline your practise!
-                                        </h4>
-                                        <p className="text-sm">
-                                            Caddy's Hack is a tool for golfer's
-                                            of all skill levels. Track every
-                                            golf shot, visualise your data,
-                                            stream line your practise, and take
-                                            control of your game. Caddy's Hack
-                                            will be there for you, through all
-                                            shots, thick and thin.
-                                        </p>
-                                    </div>
-                                </div>
+                                <LoginRightCard
+                                    HeadingText={HeadingText}
+                                    ParagraphText={ParagraphText}
+                                />
                             </div>
                         </div>
                     </div>

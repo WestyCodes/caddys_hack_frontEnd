@@ -4,12 +4,27 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import LogoCard from '../../components/logoCard';
 import LoginForm from '../../components/loginForm';
+import LoginRightCard from '../../components/loginRightCard';
 const Register = () => {
     const navigate = useNavigate();
 
     const { onRegister } = useAuth();
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [error, setError] = useState(null);
+
+    const HeadingText = `Register and use all features for FREE`;
+
+    const ParagraphText = `Caddy's Hack aids golfers by
+                            analyzing your shot data over time,
+                            allowing you to pinpoint your
+                            strengths and weaknesses accurately.
+                            Armed with this knowledge, adjust
+                            your club choices and shot
+                            directions strategically, increasing
+                            your chances of hitting the target
+                            consistently. With Caddy's Hack, you
+                            can elevate your game to new
+                            heights.`;
 
     const onChange = (e) => {
         const { id, value } = e.target;
@@ -40,27 +55,10 @@ const Register = () => {
                                     </div>
                                 </div>
 
-                                <div className="hidden sm:flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-magnolia-lane bg-top bg-cover">
-                                    <div className="px-4 py-6 text-slate-100 md:mx-6 md:p-12 bg-slate-900/50 rounded-3xl">
-                                        <h4 className="mb-6 text-xl font-semibold">
-                                            Register and use all features for
-                                            FREE
-                                        </h4>
-                                        <p className="text-sm">
-                                            Caddy's Hack aids golfers by
-                                            analyzing your shot data over time,
-                                            allowing you to pinpoint your
-                                            strengths and weaknesses accurately.
-                                            Armed with this knowledge, adjust
-                                            your club choices and shot
-                                            directions strategically, increasing
-                                            your chances of hitting the target
-                                            consistently. With Caddy's Hack, you
-                                            can elevate your game to new
-                                            heights.
-                                        </p>
-                                    </div>
-                                </div>
+                                <LoginRightCard
+                                    HeadingText={HeadingText}
+                                    ParagraphText={ParagraphText}
+                                />
                             </div>
                         </div>
                     </div>
