@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import useAuth from '../../hooks/useAuth';
 import LogoCard from '../../components/logoCard';
 import LoginForm from '../../components/loginForm';
 import LoginRightCard from '../../components/loginRightCard';
+
 const Register = () => {
     const navigate = useNavigate();
 
