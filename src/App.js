@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { AuthProvider, ProtectedRoute } from './context/auth';
+import { ModalProvider } from './context/modal';
 import HomePage from './pages/home/HomePage.js';
 import LoginPage from './pages/login/LoginPage';
 import RegisterPage from './pages/register/RegisterPage.js';
 import Dashboard from './pages/dashboard/Dashboard';
 import DataVis from './pages/dataVis/DataVisuals.js';
-import { AuthProvider, ProtectedRoute } from './context/auth';
-import { ModalProvider } from './context/modal';
 import CaddyTrack from './pages/caddyTrack/CaddyTrack.js';
 
 function App() {
