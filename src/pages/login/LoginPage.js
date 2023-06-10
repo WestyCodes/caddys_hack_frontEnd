@@ -10,6 +10,7 @@ const Login = () => {
     const { onLogin } = useAuth();
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [error, setError] = useState(null);
+    // create error handling for front end.
 
     const HeadingText = `Take control of your game and streamline your practise!`;
 

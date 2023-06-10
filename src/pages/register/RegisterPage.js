@@ -11,6 +11,7 @@ const Register = () => {
     const { onRegister } = useAuth();
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [error, setError] = useState(null);
+    // create error handling for front end.
 
     const HeadingText = `Register and use all features for FREE`;
 
