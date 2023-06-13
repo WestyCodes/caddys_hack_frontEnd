@@ -89,6 +89,9 @@ const DataVis = () => {
         getShotData();
     }, [golfClubId, userId]);
 
+    // .map for the repetition below - create component for each golf club a tag and map it.
+    // same for the p tags and "location of shot" - create object with relevant info, and map it.
+
     return (
         <div>
             <div className="flex w-screen h-screen text-slate-200 bg-midnightBlue-200">
