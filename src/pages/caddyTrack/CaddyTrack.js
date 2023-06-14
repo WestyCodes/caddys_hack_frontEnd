@@ -109,6 +109,8 @@ const CaddyTrack = () => {
         getUserInfo();
     }, [userId]);
 
+    // .map for the club menu. Create object/state for information, then map out the component.
+
     return (
         <div className="bg-cover bg-center bg-no-repeat bg-trackerbg-pattern h-screen w-screen">
             <nav className=" container flex justify-between pr-4 py-8 mx-auto h-1/6">
