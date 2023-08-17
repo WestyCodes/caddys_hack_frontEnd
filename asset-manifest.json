@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/caddys_hack_frontEnd/static/css/main.1e9563df.css",
+    "main.js": "/caddys_hack_frontEnd/static/js/main.0c2ab134.js",
+    "static/media/ai_gen_golfcourse.png": "/caddys_hack_frontEnd/static/media/ai_gen_golfcourse.ca8317b9740d053b060c.png",
+    "static/media/herobackgroundimage.jpg": "/caddys_hack_frontEnd/static/media/herobackgroundimage.8ee7f3738f47de8ab81c.jpg",
+    "static/media/abstract_bg_altered.png": "/caddys_hack_frontEnd/static/media/abstract_bg_altered.e42ecaf7ac39cf1c6eec.png",
+    "static/media/golf_course.png": "/caddys_hack_frontEnd/static/media/golf_course.4d40f9945416c3cf2f0e.png",
+    "static/media/18th_hole.png": "/caddys_hack_frontEnd/static/media/18th_hole.8446f8c4307fa59fbd7e.png",
+    "index.html": "/caddys_hack_frontEnd/index.html",
+    "main.1e9563df.css.map": "/caddys_hack_frontEnd/static/css/main.1e9563df.css.map",
+    "main.0c2ab134.js.map": "/caddys_hack_frontEnd/static/js/main.0c2ab134.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1e9563df.css",
+    "static/js/main.0c2ab134.js"
+  ]
+}
