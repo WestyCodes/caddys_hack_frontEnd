@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AuthProvider, ProtectedRoute } from './context/auth';
+// Modal Provider for error handling in the future
 // import { ModalProvider } from './context/modal';
 import HomePage from './pages/home/HomePage.js';
 import LoginPage from './pages/login/LoginPage';
