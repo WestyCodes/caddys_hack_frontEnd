@@ -20,6 +20,7 @@ A Full Stack Application, made with React and TailwindCSS. The Back-End can be f
             -   [Mobile Home Page](#mobile-home-page)
             -   [Mobile Login Page](#mobile-login-page)
             -   [Mobile Tracker Page](#mobile-tracker-page)
+    -   [Live Demo](#live-demo)
 
 ## General info
 
@@ -81,6 +82,14 @@ You will also need to download and install the backend which can be found [here]
 
 ![Login Page Mobile](./public/assets/loginPageMobile.png)
 
+
 #### Mobile Tracker Page
 
 ![Tracker Page Mobile](./public/assets/trackerPageMobile.png)
+
+## Live Demo
+
+[Live Demo](https://caddys-hack.vercel.app/)
+
+If you would like to log in, and test the features:
+Email: test@test.com Password: Testpassword1!
